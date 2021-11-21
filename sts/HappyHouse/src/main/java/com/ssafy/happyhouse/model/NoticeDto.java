@@ -1,50 +1,51 @@
 package com.ssafy.happyhouse.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class NoticeDto {
 
-	private int articleNo;
-	private String userId;
-	private String subject;
-	private String content;
-	private String regTime;
-
-	public int getArticleNo() {
-		return articleNo;
+	@ApiModelProperty(value = "글 번호")		private int articleno;
+	@ApiModelProperty(value = "작성자 아이디")	private String userid;
+	@ApiModelProperty(value = "글 제목")		private String subject;
+	@ApiModelProperty(value = "글 내용")		private String content;
+	@ApiModelProperty(value = "조회수")		private int hit;
+	@ApiModelProperty(value = "작성일")		private String regtime;
+	
+	public int getArticleno() {
+		return articleno;
 	}
-
-	public void setArticleNo(int articleNo) {
-		this.articleNo = articleNo;
+	public void setArticleno(int articleno) {
+		this.articleno = articleno;
 	}
-
-	public String getUserId() {
-		return userId;
+	public String getUserid() {
+		return userid;
 	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-
 	public String getSubject() {
 		return subject;
 	}
-
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	public String getRegTime() {
-		return regTime;
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public String getRegtime() {
+		return regtime;
+	}
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
 	}
 
-	public void setRegTime(String regTime) {
-		this.regTime = regTime;
-	}
 }

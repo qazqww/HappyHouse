@@ -1,8 +1,6 @@
 package com.ssafy.happyhouse.model.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +16,8 @@ public class NoticeServiceImpl implements NoticeService {
 	private SqlSession sqlSession;
 
 	@Override
-	public void registerArticle(NoticeDto noticeDto) throws Exception {
-		sqlSession.getMapper(NoticeMapper.class).registerArticle(noticeDto);
+	public boolean registerArticle(NoticeDto noticeDto) throws Exception {
+		return sqlSession.getMapper(NoticeMapper.class).registerArticle(noticeDto);
 	}
 	
 	@Override
@@ -38,19 +36,22 @@ public class NoticeServiceImpl implements NoticeService {
 //	}
 
 	@Override
-	public NoticeDto getArticle(int articleNo) throws Exception {
-		return sqlSession.getMapper(NoticeMapper.class).getArticle(articleNo);
+	public NoticeDto getArticle(int articleno) throws Exception {
+		return sqlSession.getMapper(NoticeMapper.class).getArticle(articleno);
 	}
 
 	@Override
-	public void updateArticle(NoticeDto noticeDto) throws Exception {
-		sqlSession.getMapper(NoticeMapper.class).updateArticle(noticeDto);
+	public void updateHit(int articleno) throws Exception {
+		sqlSession.getMapper(NoticeMapper.class).updateHit(articleno);
 	}
 
 	@Override
-	public void deleteArticle(int articleNo) throws Exception {
-		sqlSession.getMapper(NoticeMapper.class).deleteArticle(articleNo);
+	public boolean updateArticle(NoticeDto noticeDto) throws Exception {
+		return sqlSession.getMapper(NoticeMapper.class).updateArticle(noticeDto);
 	}
 
-
+	@Override
+	public boolean deleteArticle(int articleno) throws Exception {
+		return sqlSession.getMapper(NoticeMapper.class).deleteArticle(articleno);
+	}
 }

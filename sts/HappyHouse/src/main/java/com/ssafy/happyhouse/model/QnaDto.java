@@ -6,58 +6,47 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(value = "QnaDto : QnA 게시글 정보", description = "QnA 게시판 게시글의 상세 정보를 나타낸다.")
 public class QnaDto {
 	
-	@ApiModelProperty(value = "글 번호")		private int articleNo;
-	@ApiModelProperty(value = "작성자 아이디")	private String userId;
+	@ApiModelProperty(value = "글 번호")		private int articleno;
+	@ApiModelProperty(value = "작성자 아이디")	private String userid;
 	@ApiModelProperty(value = "글 제목")		private String subject;
 	@ApiModelProperty(value = "글 내용")		private String content;
 	@ApiModelProperty(value = "조회수")		private int hit;
-	@ApiModelProperty(value = "작성일")		private String regTime;
-
-	public int getArticleNo() {
-		return articleNo;
+	@ApiModelProperty(value = "작성일")		private String regtime;
+	
+	public int getArticleno() {
+		return articleno;
 	}
-
-	public void setArticleNo(int articleNo) {
-		this.articleNo = articleNo;
+	public void setArticleno(int articleno) {
+		this.articleno = articleno;
 	}
-
-	public String getUserId() {
-		return userId;
+	public String getUserid() {
+		return userid;
 	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
-
 	public String getSubject() {
 		return subject;
 	}
-
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-
 	public String getContent() {
 		return content;
 	}
-
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
 	public int getHit() {
 		return hit;
 	}
-
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-
-	public String getRegTime() {
-		return regTime;
+	public String getRegtime() {
+		return regtime;
 	}
-
-	public void setRegTime(String regTime) {
-		this.regTime = regTime;
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
 	}
 }

@@ -6,22 +6,22 @@
 
 	<insert id="registerArticle" parameterType="NoticeDto">
 		insert into notice (userid, subject, content, regtime)
-		values (#{userId}, #{subject}, #{content}, now())
+		values (#{userid}, #{subject}, #{content}, now())
 	</insert>
 
-	<sql id="search">
-		<if test="word != null and word != ''">
-			<if test="key == subject">
-				and subject like concat('%', #{word}, '%')
-			</if>
-			<if test="key != subject">
-				and ${key} = #{word}
-			</if>
-		</if>
-	</sql>
+<!-- 	<sql id="search"> -->
+<!-- 		<if test="word != null and word != ''"> -->
+<!-- 			<if test="key == subject"> -->
+<!-- 				and subject like concat('%', #{word}, '%') -->
+<!-- 			</if> -->
+<!-- 			<if test="key != subject"> -->
+<!-- 				and ${key} = #{word} -->
+<!-- 			</if> -->
+<!-- 		</if> -->
+<!-- 	</sql> -->
 	
 	<select id="listArticle" resultType="NoticeDto">
-		select articleno, userid, subject, content, regtime
+		select articleno, userid, subject, content, hit, regtime
 		from notice
 		order by articleno desc
 	</select>
@@ -36,20 +36,26 @@
 <!-- 	</select> -->
 	
 	<select id="getArticle" parameterType="int" resultType="NoticeDto">
-		select articleno, subject, content
+		select articleno, userid, subject, content, hit, regtime
 		from notice 
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</select>
+	
+	<update id="updateHit" parameterType="int">
+		update notice
+		set hit = hit + 1
+		where articleno = #{articleno}
+	</update>
 	
 	<update id="updateArticle" parameterType="NoticeDto">
 		update notice
 		set subject = #{subject}, content = #{content}
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</update>
 	
 	<delete id="deleteArticle" parameterType="int">
 		delete from notice
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</delete>
 
 </mapper>

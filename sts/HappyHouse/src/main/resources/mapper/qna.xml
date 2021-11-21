@@ -6,7 +6,7 @@
 
 	<insert id="registerArticle" parameterType="QnaDto">
 		insert into qna (userid, subject, content, regtime)
-		values (#{userId}, #{subject}, #{content}, now())
+		values (#{userid}, #{subject}, #{content}, now())
 	</insert>
 	
 	<select id="listArticle" resultType="QnaDto">
@@ -16,26 +16,26 @@
 	</select>
 	
 	<select id="getArticle" parameterType="int" resultType="QnaDto">
-		select articleno, subject, content
+		select articleno, userid, subject, content, hit, regtime
 		from qna
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</select>
 	
 	<update id="updateHit" parameterType="int">
 		update qna
 		set hit = hit + 1
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</update>
 	
 	<update id="updateArticle" parameterType="QnaDto">
 		update qna
 		set subject = #{subject}, content = #{content}
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</update>
 	
 	<delete id="deleteArticle" parameterType="int">
 		delete from qna
-		where articleno = #{articleNo}
+		where articleno = #{articleno}
 	</delete>
 
 </mapper>
