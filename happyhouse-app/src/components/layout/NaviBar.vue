@@ -1,18 +1,23 @@
 <template>
   <v-app-bar app flat>
     <div class="d-flex align-center">
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-        transition="scale-transition"
-        width="40"
-      />
+      <router-link to="/">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+      </router-link>
     </div>
 
     <v-container class="mx-auto py-0">
-      <v-btn depressed> 게시판 </v-btn>
+      <router-link :to="{ name: 'Board' }" class="link"
+        ><v-btn depressed> 게시판 </v-btn></router-link
+      >
+
       <v-btn depressed> ???</v-btn>
       <v-btn depressed> 아파트 정보 </v-btn>
     </v-container>
@@ -27,9 +32,15 @@
       <v-btn small color="secondary" dark> 아파트 정보 </v-btn>
     </div> -->
     <v-spacer></v-spacer>
+    <v-container class="col-2">
+      <router-link :to="{ name: 'SignIn' }" class="link">
+        <v-btn depressed outlined> 로그인 </v-btn>
+      </router-link>
 
-    <v-btn depressed> 로그인 </v-btn>
-    <v-btn depressed> 회원가입</v-btn>
+      <router-link :to="{ name: 'SignUp' }" class="link">
+        <v-btn depressed outlined> 회원가입</v-btn>
+      </router-link>
+    </v-container>
 
     <!-- <v-btn
       href="https://github.com/vuetifyjs/vuetify/releases/latest"
