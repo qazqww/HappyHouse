@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Notice from "../views/Notice.vue";
+import NoticeList from "../components/notice/NoticeList";
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,19 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/notice",
+    name: "Notice",
+    component: Notice,
+    redirect: "/notice/list",
+    children: [
+      {
+        path: "list",
+        name: "NoticeList",
+        component: NoticeList,
+      }
+    ]
   },
 ];
 
