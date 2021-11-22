@@ -2,7 +2,10 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Notice from "../views/Notice.vue";
-import NoticeList from "../components/notice/NoticeList";
+import NoticeList from "../components/notice/NoticeList.vue";
+import NoticeWrite from "../components/notice/NoticeWrite.vue"
+import NoticeView from "../components/notice/NoticeView.vue"
+import NoticeUpdate from "../components/notice/NoticeUpdate.vue"
 
 import Member from "@/views/Member.vue";
 import MemberLogin from "@/components/user/MemberLogin.vue";
@@ -110,6 +113,21 @@ const routes = [
         path: "list",
         name: "NoticeList",
         component: NoticeList,
+      },
+      {
+        path: "write",
+        name: "NoticeWrite",
+        component: NoticeWrite,
+      },
+      {
+        path: "view",
+        name: "NoticeView",
+        component: NoticeView,
+      },
+      {
+        path: "update",
+        name: "NoticeUpdate",
+        component: NoticeUpdate,
       },
     ],
   },

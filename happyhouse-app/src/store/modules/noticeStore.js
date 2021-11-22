@@ -1,4 +1,4 @@
-import { noticeList } from "@/api/notice.js";
+import { listNotice } from "@/api/notice.js";
 
 const noticeStore = {
   namespaced: true,
@@ -13,10 +13,9 @@ const noticeStore = {
   },
   actions: {
     loadNotices: ({ commit }) => {
-      noticeList(
+      listNotice(
         ({ data }) => {
           commit("LOAD_NOTICES", data);
-          console.log(data);
         },
         (error) => {
           console.log(error);
