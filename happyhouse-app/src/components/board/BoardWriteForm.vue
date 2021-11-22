@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       article: {
-        articleno: "",
+        articleno: 0,
         userid: "",
         subject: "",
         content: "",
