@@ -1,5 +1,10 @@
 package com.ssafy.happyhouse.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.happyhouse.model.MemberDto;
+import com.ssafy.happyhouse.model.service.JwtServiceImpl;
 import com.ssafy.happyhouse.model.service.MemberService;
 
 import io.swagger.annotations.Api;
@@ -34,6 +40,8 @@ public class MemberController{
 	private static final String FAIL = "fail";
 	
 	@Autowired
+	private JwtServiceImpl jwtService;
+	@Autowired
 	private MemberService memberService;
 	
 	@ApiOperation(value = "아이디 중복 여부 체크", notes = "같은 아이디를 가진 회원이 존재하지 여부를 반환한다. 아이디가 이미 존재한다면 'fail', 없는 아이디면 'success' 문자열을 반환한다.", response = String.class)
@@ -46,17 +54,56 @@ public class MemberController{
 		return new ResponseEntity<String>(FAIL, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "회원 로그인", notes = "아이디와 비밀번호를 입력받아 로그인을 시도한다.", response = MemberDto.class)
+	@ApiOperation(value = "회원 로그인", notes = "Access-token과 로그인 결과 메세지를 반환한다.", response = Map.class)
 	@PostMapping("/login")
-	public ResponseEntity<MemberDto> login(@RequestBody @ApiParam(value = "회원 아이디와 비밀번호", required = true) MemberDto memberDto) throws Exception {
-		MemberDto member = memberService.login(memberDto);
-		System.out.println(member);
-		if (member != null) {
-//			session.setAttribute("userinfo", member);
-			return new ResponseEntity<MemberDto>(member, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<MemberDto>(member, HttpStatus.NO_CONTENT);
+	public ResponseEntity<Map<String, Object>> login(@RequestBody @ApiParam(value = "로그인 시 필요한 회원정보(아이디, 비밀번호).", required = true) MemberDto memberDto) {
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = null;
+		try {
+			MemberDto loginUser = memberService.login(memberDto);
+			if (loginUser != null) {
+				String token = jwtService.create("userid", loginUser.getUserid(), "access-token");// key, data, subject
+				logger.debug("로그인 토큰정보 : {}", token);
+				resultMap.put("access-token", token);
+				resultMap.put("message", SUCCESS);
+				status = HttpStatus.ACCEPTED;
+			} else {
+				resultMap.put("message", FAIL);
+				status = HttpStatus.ACCEPTED;
+			}
+		} catch (Exception e) {
+			logger.error("로그인 실패 : {}", e);
+			resultMap.put("message", e.getMessage());
+			status = HttpStatus.INTERNAL_SERVER_ERROR;
 		}
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
+	}
+	
+	@ApiOperation(value = "회원인증", notes = "회원 정보를 담은 Token을 반환한다.", response = Map.class)
+	@GetMapping("/info/{userid}")
+	public ResponseEntity<Map<String, Object>> getInfo(@PathVariable("userid") @ApiParam(value = "인증할 회원의 아이디.", required = true) String userid, HttpServletRequest request) {
+//		logger.debug("userid : {} ", userid);
+		Map<String, Object> resultMap = new HashMap<>();
+		HttpStatus status = HttpStatus.ACCEPTED;
+		if (jwtService.isUsable(request.getHeader("access-token"))) {
+			logger.info("사용 가능한 토큰!!!");
+			try {
+//				로그인 사용자 정보.
+				MemberDto memberDto = memberService.info(userid);
+				resultMap.put("userInfo", memberDto);
+				resultMap.put("message", SUCCESS);
+				status = HttpStatus.ACCEPTED;
+			} catch (Exception e) {
+				logger.error("정보조회 실패 : {}", e);
+				resultMap.put("message", e.getMessage());
+				status = HttpStatus.INTERNAL_SERVER_ERROR;
+			}
+		} else {
+			logger.error("사용 불가능 토큰!!!");
+			resultMap.put("message", FAIL);
+			status = HttpStatus.ACCEPTED;
+		}
+		return new ResponseEntity<Map<String, Object>>(resultMap, status);
 	}
 	
 	@ApiOperation(value = "회원 가입", notes = "회원 정보를 입력받아 가입한다. 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
@@ -68,11 +115,11 @@ public class MemberController{
 		return new ResponseEntity<String>(FAIL, HttpStatus.OK);
 	}
 	
-	@ApiOperation(value = "회원 정보 보기", notes = "아이디에 해당하는 회원의 정보를 반환한다.", response = MemberDto.class)
-	@GetMapping("/{userid}")
-	public ResponseEntity<MemberDto> info(@PathVariable("userid") @ApiParam(value = "정보를 얻어올 회원 아이디", required = true) String userid) throws Exception {
-		return new ResponseEntity<MemberDto>(memberService.info(userid), HttpStatus.OK);
-	}
+//	@ApiOperation(value = "회원 정보 보기", notes = "아이디에 해당하는 회원의 정보를 반환한다.", response = MemberDto.class)
+//	@GetMapping("/{userid}")
+//	public ResponseEntity<MemberDto> info(@PathVariable("userid") @ApiParam(value = "정보를 얻어올 회원 아이디", required = true) String userid) throws Exception {
+//		return new ResponseEntity<MemberDto>(memberService.info(userid), HttpStatus.OK);
+//	}
 	
 	@ApiOperation(value = "회원 정보 수정", notes = "수정할 회원 정보를 입력한다. 그리고 DB수정 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PutMapping

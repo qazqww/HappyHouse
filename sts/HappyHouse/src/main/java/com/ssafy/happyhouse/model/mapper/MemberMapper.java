@@ -1,7 +1,5 @@
 package com.ssafy.happyhouse.model.mapper;
 
-import java.util.Map;
-
 import com.ssafy.happyhouse.model.MemberDto;
 
 public interface MemberMapper {

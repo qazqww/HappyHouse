@@ -30,7 +30,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDto login(MemberDto memberDto) throws Exception {
 		return sqlSession.getMapper(MemberMapper.class).login(memberDto);
 	}
-
+	
 	@Override
 	public boolean updateMember(MemberDto memberDto) throws Exception {
 		return sqlSession.getMapper(MemberMapper.class).updateMember(memberDto);
