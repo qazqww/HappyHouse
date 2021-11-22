@@ -1,5 +1,5 @@
 <template>
-  <h2>BoardView 페이지입니다.</h2>
+  <h2>BoardList 페이지입니다.</h2>
 </template>
 
 <script>
