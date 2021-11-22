@@ -48,7 +48,7 @@ public class NoticeController {
 	
 	@ApiOperation(value = "게시판 글 작성", notes = "새로운 게시글 정보를 입력한다. 그리고 DB입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PostMapping
-	public ResponseEntity<String> registerAtricle(@ApiParam(value = "등록할 게시글 정보", required = true) NoticeDto noticeDto) throws Exception {
+	public ResponseEntity<String> registerAtricle(@RequestBody @ApiParam(value = "등록할 게시글 정보", required = true) NoticeDto noticeDto) throws Exception {
 		if (noticeService.registerArticle(noticeDto)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}

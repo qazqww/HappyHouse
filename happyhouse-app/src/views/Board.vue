@@ -1,5 +1,9 @@
 <template>
-  <v-container>
+  <v-container class="text-center">
+    <h2 class="display-1 font-weight-bold mb-3">질문 게시판</h2>
+    <router-view></router-view>
+  </v-container>
+  <!-- <v-container>
     <div justify="center" align="center">
       <h3>게시판 페이지입니다.</h3>
     </div>
@@ -15,7 +19,7 @@
     <v-row>
       <v-col justify="center" align="center"><router-view></router-view></v-col>
     </v-row>
-  </v-container>
+  </v-container> -->
 </template>
 
 <script>

@@ -51,9 +51,6 @@ export default {
   methods: {
     ...mapActions(noticeStore, ["loadNotices"]),
     ...mapMutations(noticeStore, ["LOAD_NOTICES"]),
-    getNotice() {
-      this.loadNotices();
-    },
     moveWrite() {
       this.$router.push({ name: "NoticeWrite" });
     },

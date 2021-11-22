@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+
 import Notice from "../views/Notice.vue";
 import NoticeList from "../components/notice/NoticeList.vue";
 import NoticeWrite from "../components/notice/NoticeWrite.vue"
@@ -73,10 +74,10 @@ const routes = [
     ],
   },
   {
-    path: "/board",
+    path: "/qna",
     name: "Board",
     component: Board,
-    redirect: "/board/list",
+    redirect: "/qna/list",
     children: [
       {
         path: "list",
@@ -86,19 +87,19 @@ const routes = [
       {
         path: "write",
         name: "BoardWrite",
-        beforeEnter: onlyAuthUser,
+        // beforeEnter: onlyAuthUser,
         component: BoardWrite,
       },
       {
-        path: "detail/:articleno",
+        path: "view/:articleno",
         name: "BoardView",
-        beforeEnter: onlyAuthUser,
+        // beforeEnter: onlyAuthUser,
         component: BoardView,
       },
       {
         path: "update/:articleno",
         name: "BoardUpdate",
-        beforeEnter: onlyAuthUser,
+        // beforeEnter: onlyAuthUser,
         component: BoardUpdate,
       },
     ],
@@ -120,12 +121,12 @@ const routes = [
         component: NoticeWrite,
       },
       {
-        path: "view",
+        path: "view/:articleno",
         name: "NoticeView",
         component: NoticeView,
       },
       {
-        path: "update",
+        path: "update/:articleno",
         name: "NoticeUpdate",
         component: NoticeUpdate,
       },
