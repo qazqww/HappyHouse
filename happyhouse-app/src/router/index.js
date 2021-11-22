@@ -56,12 +56,12 @@ const routes = [
     component: Member,
     children: [
       {
-        path: "singin",
+        path: "signin",
         name: "SignIn",
         component: MemberLogin,
       },
       {
-        path: "singup",
+        path: "signup",
         name: "SignUp",
         component: MemberJoin,
       },

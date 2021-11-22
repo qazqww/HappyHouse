@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL } from "@/config";
+import { API_BASE_URL, APT_DEAL_URL } from "@/config";
 
 function apiInstance() {
   const instance = axios.create({
@@ -11,4 +11,14 @@ function apiInstance() {
   return instance;
 }
 
-export { apiInstance };
+function houseInstance() {
+  const instance = axios.create({
+    baseURL: APT_DEAL_URL,
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+  return instance;
+}
+
+export { apiInstance, houseInstance };

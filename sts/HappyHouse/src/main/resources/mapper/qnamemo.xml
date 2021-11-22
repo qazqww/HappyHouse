@@ -10,7 +10,7 @@
 	</insert>
 	
 	<select id="listMemo" parameterType="int" resultType="MemoDto">
-		select userid, comment, memotime
+		select memono, userid, comment, memotime, articleno
 		from memo
 		where articleno = #{articleno}
 		order by memotime

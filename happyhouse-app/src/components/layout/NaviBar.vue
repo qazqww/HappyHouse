@@ -17,10 +17,8 @@
       <v-btn depressed :to="{ name: 'Board' }"> 게시판 </v-btn>
 
       <v-btn depressed> ???</v-btn>
-      <v-btn depressed> 아파트 정보 </v-btn>
       <v-btn depressed :to="{ name: 'Notice' }">공지사항</v-btn>
       <v-btn depressed :to="{ name: 'House' }"> 아파트 매매 정보 </v-btn>
-      <v-btn depressed> QnA </v-btn>
     </v-container>
     <!-- <div class="my-2">
       <v-btn class="hidden-sm-and-down"> 게시판 </v-btn>
