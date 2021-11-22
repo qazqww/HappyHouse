@@ -16,6 +16,11 @@
         <house-detail />
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <kakao-map />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
@@ -23,6 +28,7 @@
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
+import KakaoMap from "@/components/KakaoMap.vue";
 
 export default {
   name: "House",
@@ -30,6 +36,7 @@ export default {
     HouseSearchBar,
     HouseList,
     HouseDetail,
+    KakaoMap,
   },
 };
 </script>
