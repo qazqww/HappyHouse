@@ -16,11 +16,7 @@
         <house-detail />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col>
-        <kakao-map />
-      </v-col>
-    </v-row>
+    <kakao-map ref="kmap" class="kmap" :options="mapOption" />
   </v-container>
 </template>
 
@@ -28,7 +24,7 @@
 import HouseSearchBar from "@/components/house/HouseSearchBar.vue";
 import HouseList from "@/components/house/HouseList.vue";
 import HouseDetail from "@/components/house/HouseDetail.vue";
-import KakaoMap from "@/components/KakaoMap.vue";
+import KakaoMap from "@/components/map/KakaoMap.vue";
 
 export default {
   name: "House",
@@ -37,6 +33,19 @@ export default {
     HouseList,
     HouseDetail,
     KakaoMap,
+  },
+  data() {
+    return {
+      mapOption: {
+        center: {
+          lat: 32.450701,
+          lng: 126.570667,
+        },
+        level: 3,
+      },
+      apts: [],
+      markers: null,
+    }
   },
 };
 </script>

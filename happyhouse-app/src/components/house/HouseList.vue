@@ -15,7 +15,7 @@
 
 <script>
 import HouseListRow from "@/components/house/HouseListRow.vue";
-import { mapState } from "vuex";
+import { mapMutations, mapState } from "vuex";
 
 const houseStore = "houseStore";
 
@@ -29,9 +29,12 @@ export default {
   },
   computed: {
     ...mapState(houseStore, ["houses"]),
-    // houses() {
-    //   return this.$store.state.houses;
-    // },
+  },
+  methods: {
+    ...mapMutations(houseStore, ["CLEAR_HOUSE_LIST"]),
+  },
+  destroyed() {
+    this.CLEAR_HOUSE_LIST();
   },
 };
 </script>

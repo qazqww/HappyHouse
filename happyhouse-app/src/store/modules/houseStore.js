@@ -7,9 +7,14 @@ const houseStore = {
     guguns: [{ value: null, text: "선택하세요" }],
     houses: [],
     house: null,
+    keywords: [], // 지도에서 검색하기 위해 houses에서 키워드를 따와 저장
   },
 
-  getters: {},
+  getters: {
+    getKeywords(state) {
+      return state.keywords;
+    }
+  },
 
   mutations: {
     SET_SIDO_LIST: (state, sidos) => {
@@ -31,9 +36,17 @@ const houseStore = {
     SET_HOUSE_LIST: (state, houses) => {
       //   console.log(houses);
       state.houses = houses;
+      state.keywords = [];
+      houses.forEach((house) => {
+        state.keywords.push(house.법정동 + " " + house.아파트);
+      });
+      console.log(state.keywords);
     },
     SET_DETAIL_HOUSE: (state, house) => {
       state.house = house;
+    },
+    CLEAR_HOUSE_LIST(state) {
+      state.houses = [];
     },
   },
 
@@ -41,7 +54,7 @@ const houseStore = {
     getSido: ({ commit }) => {
       sidoList(
         ({ data }) => {
-        //   console.log(data);
+          //   console.log(data);
           commit("SET_SIDO_LIST", data);
         },
         (error) => {
@@ -78,9 +91,9 @@ const houseStore = {
       };
       houseList(
         params,
-          (response) => {
-              console.log(SERVICE_KEY);
-          //   console.log(response.data.response.body.items.item);
+        (response) => {
+          // console.log("key", params.serviceKey);
+          console.log(response.data.response.body.items.item);
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
         },
         (error) => {
