@@ -8,21 +8,25 @@
       <v-row align="center">
         <router-link to="/">
           <v-img
-            alt="Vuetify Logo"
-            class="shrink mr-2"
+            alt="HappyHouse Logo"
             contain
-            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+            src="@/assets/H_logo.png"
             transition="scale-transition"
-            width="40"
+            width="35"
           />
         </router-link>
-        <v-btn depressed :to="{ name: 'Board' }"> 게시판 </v-btn>
-
-        <v-btn depressed> ???</v-btn>
-        <v-btn depressed :to="{ name: 'Notice' }">공지사항</v-btn>
-        <v-btn depressed :to="{ name: 'House' }"> 아파트 매매 정보 </v-btn>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Board' }">
+          게시판
+        </v-btn>
+        <v-btn large depressed style="font-size: 15px"> ???</v-btn>
+        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Notice' }"
+          >공지사항
+        </v-btn>
+        <v-btn large depressed style="font-size: 15px" :to="{ name: 'House' }">
+          아파트 매매 정보
+        </v-btn>
       </v-row>
-      <v-spacer />
     </v-container>
     <!-- <div class="my-2">
       <v-btn class="hidden-sm-and-down"> 게시판 </v-btn>
@@ -71,7 +75,7 @@
     </div>
     <div v-else>
       <v-btn color="primary" depressed :to="{ name: 'SignIn' }"> 로그인 </v-btn>
-
+      &nbsp;
       <v-btn color="secondary" depressed :to="{ name: 'SignUp' }">
         회원가입</v-btn
       >

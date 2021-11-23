@@ -3,7 +3,15 @@
     <v-row>
       <v-col justify="center" align="center">
         <v-card elevation="0">
-          <h1>HAPPY HOUSE</h1>
+          <router-link to="/">
+            <v-img
+              alt="Letter Logo"
+              contain
+              src="@/assets/letter_logo.png"
+              transition="scale-transition"
+              width="300"
+            />
+          </router-link>
         </v-card>
       </v-col>
     </v-row>
@@ -40,7 +48,6 @@
               >
               </v-text-field>
             </v-col>
-
             <v-col
               ><v-text-field
                 id="userpwd"
@@ -76,6 +83,9 @@
         &nbsp;&nbsp;|&nbsp;&nbsp; 회원가입
       </v-card>
     </v-row>
+    <br />
+    <br />
+    <br />
   </v-container>
 </template>
 
