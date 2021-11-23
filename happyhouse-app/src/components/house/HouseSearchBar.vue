@@ -11,10 +11,10 @@
       <b-button variant="outline-primary" @click="sendKeyword">검색</b-button>
     </b-col> -->
     <v-col class="sm-3">
-        <v-select :items="sidos" v-model="sidoCode" @change="gugunList"></v-select>
+        <v-select :items="sidos" v-model="sidoCode" @change="gugunList" return-object></v-select>
     </v-col>
     <v-col class="sm-3">
-        <v-select :items="guguns" v-model="gugunCode" @change="searchApt"></v-select>
+        <v-select :items="guguns" v-model="gugunCode" @change="searchApt" return-object></v-select>
     </v-col>
   </v-row>
 </template>
@@ -56,18 +56,20 @@ export default {
   },
   methods: {
     ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
-    ...mapMutations(houseStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST"]),
+    ...mapMutations(houseStore, ["CLEAR_SIDO_LIST", "CLEAR_GUGUN_LIST", "SET_SIDO", "SET_GUGUN"]),
     // sidoList() {
     //   this.getSido();
     // },
     gugunList() {
-      // console.log(this.sidoCode);
+      // console.log("시도 이름: ", this.sidoCode.text);
       this.CLEAR_GUGUN_LIST();
+      this.SET_SIDO(this.sidoCode.text);
       this.gugunCode = null;
-      if (this.sidoCode) this.getGugun(this.sidoCode);
+      if (this.sidoCode) this.getGugun(this.sidoCode.value);
     },
     searchApt() {
-      if (this.gugunCode) this.getHouseList(this.gugunCode);
+      this.SET_GUGUN(this.gugunCode.text);
+      if (this.gugunCode) this.getHouseList(this.gugunCode.value);
     },
   },
 };
