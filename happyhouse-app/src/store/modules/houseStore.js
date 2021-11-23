@@ -8,12 +8,25 @@ const houseStore = {
     houses: [],
     house: null,
     keywords: [], // 지도에서 검색하기 위해 houses에서 키워드를 따와 저장
+    mapOption: {
+      center: {
+        lat: 32.450701,
+        lng: 126.570667,
+      },
+      level: 3,
+    },
   },
 
   getters: {
+    getHouse(state) {
+      return state.house;
+    },
     getKeywords(state) {
       return state.keywords;
-    }
+    },
+    getOption(state) {
+      return state.mapOption;
+    },
   },
 
   mutations: {

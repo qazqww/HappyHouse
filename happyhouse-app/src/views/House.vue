@@ -16,7 +16,7 @@
         <house-detail />
       </v-col>
     </v-row>
-    <kakao-map ref="kmap" class="kmap" :options="mapOption" />
+    <kakao-map ref="kmap" class="kmap" />
   </v-container>
 </template>
 
@@ -35,17 +35,7 @@ export default {
     KakaoMap,
   },
   data() {
-    return {
-      mapOption: {
-        center: {
-          lat: 32.450701,
-          lng: 126.570667,
-        },
-        level: 3,
-      },
-      apts: [],
-      markers: null,
-    }
+    return {};
   },
 };
 </script>
