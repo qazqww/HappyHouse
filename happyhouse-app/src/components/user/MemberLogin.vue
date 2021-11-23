@@ -2,18 +2,22 @@
   <v-container>
     <v-row>
       <v-col justify="center" align="center">
-        <h3>로그인 페이지입니다</h3></v-col
-      >
+        <v-card elevation="0">
+          <h1>HAPPY HOUSE</h1>
+        </v-card>
+      </v-col>
     </v-row>
 
-    <v-row>
+    <v-row class="text-center">
       <v-col>
-        <h3>테스트</h3>
-        <v-card class="mx-auto" max-width="600">
+        <v-card
+          class="d-flex mx-auto justify-center"
+          min-height="350"
+          max-width="600"
+          elevation="2"
+          outlined
+        >
           <v-form>
-            <v-alert dense text type="success" v-if="isLogin">
-              <strong>로그인</strong> 되었습니다.
-            </v-alert>
             <v-alert
               dense
               outlined
@@ -25,33 +29,52 @@
               확인하세요.
             </v-alert>
 
-            <v-row><v-col></v-col></v-row>
-            <v-text-field
-              v-model="user.userid"
-              label="아이디"
-              required
-              placeholder="ID"
-              @keyup.enter="confirm"
-            >
-            </v-text-field>
-            <v-text-field
-              v-model="user.userpwd"
-              label="비밀번호"
-              required
-              placeholder="PW"
-              @keyup.enter="confirm"
-            >
-            </v-text-field>
-            <v-row><v-col></v-col></v-row>
-            <v-row><v-col></v-col></v-row>
+            <v-col>
+              <v-text-field
+                id="userid"
+                v-model="user.userid"
+                label="아이디"
+                required
+                @keyup.enter="confirm"
+                prepend-icon="mdi-account"
+              >
+              </v-text-field>
+            </v-col>
 
-            <v-btn color="primary" @click="confirm"> 로그인 </v-btn>
-            <v-btn color="success" @click="movePage"> 회원가입 </v-btn>
+            <v-col
+              ><v-text-field
+                id="userpwd"
+                v-model="user.userpwd"
+                label="비밀번호"
+                required
+                @keyup.enter="confirm"
+                prepend-icon="mdi-lock"
+              >
+              </v-text-field
+            ></v-col>
 
-            <v-row><v-col></v-col></v-row>
+            <br />
+
+            <v-btn
+              block
+              x-large
+              color="primary"
+              style="font-size: 20px"
+              @click="confirm"
+            >
+              로그인
+            </v-btn>
           </v-form>
         </v-card>
       </v-col>
+    </v-row>
+    <br />
+    <br />
+    <v-row justify="center" align="center">
+      <v-card elevation="0">
+        비밀번호 찾기 &nbsp;&nbsp;|&nbsp;&nbsp; 아이디 찾기
+        &nbsp;&nbsp;|&nbsp;&nbsp; 회원가입
+      </v-card>
     </v-row>
   </v-container>
 </template>
@@ -91,4 +114,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="css" scoped>
+.v-text-field >>> input {
+  font-size: 1.7em;
+  font-weight: bold;
+}
+.v-text-field >>> label {
+  font-size: 1em;
+}
+/* .v-text-field >>> button {
+  font-size: 0.8em;
+} */
+</style>

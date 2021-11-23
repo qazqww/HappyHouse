@@ -1,24 +1,28 @@
 <template>
   <v-app-bar app flat>
-    <div class="d-flex align-center">
-      <router-link to="/">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-      </router-link>
-    </div>
+    <v-app-bar-nav-icon class="hidden-md-and-up" @click="toggleDrawer" />
+
+    <div class="d-flex align-center"></div>
 
     <v-container class="mx-auto py-0">
-      <v-btn depressed :to="{ name: 'Board' }"> 게시판 </v-btn>
+      <v-row align="center">
+        <router-link to="/">
+          <v-img
+            alt="Vuetify Logo"
+            class="shrink mr-2"
+            contain
+            src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+            transition="scale-transition"
+            width="40"
+          />
+        </router-link>
+        <v-btn depressed :to="{ name: 'Board' }"> 게시판 </v-btn>
 
-      <v-btn depressed> ???</v-btn>
-      <v-btn depressed :to="{ name: 'Notice' }">공지사항</v-btn>
-      <v-btn depressed :to="{ name: 'House' }"> 아파트 매매 정보 </v-btn>
+        <v-btn depressed> ???</v-btn>
+        <v-btn depressed :to="{ name: 'Notice' }">공지사항</v-btn>
+        <v-btn depressed :to="{ name: 'House' }"> 아파트 매매 정보 </v-btn>
+      </v-row>
+      <v-spacer />
     </v-container>
     <!-- <div class="my-2">
       <v-btn class="hidden-sm-and-down"> 게시판 </v-btn>
@@ -66,15 +70,11 @@
       </v-menu>
     </div>
     <div v-else>
-      <v-container>
-        <v-row class="col-2">
-          <v-col>
-            <v-btn depressed outlined :to="{ name: 'SignIn' }"> 로그인 </v-btn>
+      <v-btn color="primary" depressed :to="{ name: 'SignIn' }"> 로그인 </v-btn>
 
-            <v-btn depressed outlined :to="{ name: 'SignUp' }"> 회원가입</v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-btn color="secondary" depressed :to="{ name: 'SignUp' }">
+        회원가입</v-btn
+      >
     </div>
 
     <!-- <v-avatar color="indigo">

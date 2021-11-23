@@ -11,9 +11,16 @@ async function findById(userid, success, fail) {
   await api.get(`/user/info/${userid}`).then(success).catch(fail);
 }
 
-async function modifyInfo(user, success, fail) {
-  api.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
-  await api
+// async function modifyInfo(user, success, fail) {
+//   api.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
+//   await api
+//     .put(`/user/${user.userId}`, JSON.stringify(user))
+//     .then(success)
+//     .catch(fail);
+// }
+
+function modifyInfo(user, success, fail) {
+  api
     .put(`/user/${user.userId}`, JSON.stringify(user))
     .then(success)
     .catch(fail);
