@@ -16,7 +16,7 @@
 	</select>
 	
 	<select id="listFavorite" parameterType="string" resultType="map">
-		select f.favno, s.sidoname, g.gugunname, f.addtime
+		select f.favno, s.sidoname, g.gugunname, f.guguncode, f.addtime
 		from favorite f, guguncode g, sidocode s
 		where g.gugunCode in (
 			select gugunCode

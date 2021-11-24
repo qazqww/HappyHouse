@@ -35,6 +35,7 @@
 <script>
 import { mapState, mapActions, mapMutations, mapGetters } from "vuex";
 import { checkFavorite, registerFavorite } from "@/api/favorite.js";
+import { registerValue } from "@/api/apartvalue.js";
 
 const memberStore = "memberStore";
 const houseStore = "houseStore";
@@ -92,6 +93,7 @@ export default {
                 `${this.getSidoGugun} 을(를) 관심지역에 등록하시겠습니까?`
               )
             ) {
+              this.getAverage();
               registerFavorite(
                 fav,
                 ({ data }) => {
@@ -110,6 +112,26 @@ export default {
             let msg = "이미 관심지역에 등록된 지역입니다.";
             alert(msg);
           }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    },
+    getAverage() {
+      let total = 0;
+      this.houses.forEach((house) => {
+        total += Number(house.거래금액.replace(",", "") + "0000");
+      });
+      total /= 10;
+      const param = {
+        average: total,
+        gugunCode: this.gugunCode.value + '00000',
+      };
+      registerValue(
+        param,
+        ({ data }) => {
+          console.log(data);
         },
         (error) => {
           console.log(error);

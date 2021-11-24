@@ -112,6 +112,7 @@ const houseStore = {
       //   const SERVICE_KEY =
       //     "9Xo0vlglWcOBGUDxH8PPbuKnlBwbWU6aO7%2Bk3FV4baF9GXok1yxIEF%2BIwr2%2B%2F%2F4oVLT8bekKU%2Bk9ztkJO0wsBw%3D%3D";
       const params = {
+        numOfRows: 50,
         LAWD_CD: gugunCode,
         DEAL_YMD: "202110",
         serviceKey: decodeURIComponent(SERVICE_KEY),

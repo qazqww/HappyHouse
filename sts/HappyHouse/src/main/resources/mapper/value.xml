@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.ssafy.happyhouse.model.mapper.ApartValueMapper">
+
+	<insert id="registerValue" parameterType="ApartValueDto">
+		insert into apartvalue (gugunCode, average)
+		values (#{gugunCode}, #{average})
+		on duplicate key update average = values(average);
+	</insert>
+	
+	<select id="getValue" parameterType="String" resultType="ApartValueDto">
+		select gugunCode, average
+		from apartvalue
+		where gugunCode = #{gugunCode}
+	</select>
+
+</mapper>
