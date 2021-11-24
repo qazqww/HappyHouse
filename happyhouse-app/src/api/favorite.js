@@ -7,6 +7,7 @@ function listFavorite(userid, success, fail) {
 }
 
 function registerFavorite(fav, success, fail) {
+  console.log(fav);
   api.post(`/favorite`, JSON.stringify(fav)).then(success).catch(fail);
 }
 

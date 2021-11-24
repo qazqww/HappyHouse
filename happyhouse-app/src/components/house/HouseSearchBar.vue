@@ -36,6 +36,7 @@
 import { mapState, mapActions, mapMutations, mapGetters } from "vuex";
 import { registerFavorite } from "@/api/favorite.js";
 
+const memberStore = "memberStore";
 const houseStore = "houseStore";
 
 export default {
@@ -49,6 +50,7 @@ export default {
   computed: {
     ...mapState(houseStore, ["sidos", "guguns"]),
     ...mapGetters(houseStore, ["getSidoGugun"]),
+    ...mapGetters(memberStore, ["checkUserInfo"]),
   },
   created() {
     this.CLEAR_SIDO_LIST();
@@ -75,8 +77,8 @@ export default {
     addFavorite() {
       if (confirm(`${this.getSidoGugun} 을(를) 관심지역에 등록하시겠습니까?`)) {
         registerFavorite({
-          userid: "ssafy",
-          dongCode: "",
+          userid: this.checkUserInfo.userid,
+          gugunCode: this.gugunCode.value + '00000',
         },
         ({ data }) => {
           let msg = "등록 처리시 문제가 발생했습니다.";

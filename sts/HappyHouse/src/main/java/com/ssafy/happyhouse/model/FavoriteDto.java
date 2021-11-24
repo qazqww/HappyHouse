@@ -8,7 +8,7 @@ public class FavoriteDto {
 	
 	@ApiModelProperty(value = "관리 번호")			private int favno;
 	@ApiModelProperty(value = "회원 아이디")		private String userid;
-	@ApiModelProperty(value = "관심 지역 동 코드")		private String dongCode;
+	@ApiModelProperty(value = "관심 지역 구군 코드")	private String gugunCode;
 	@ApiModelProperty(value = "등록일")			private String addtime;
 	
 	public int getFavno() {
@@ -23,11 +23,11 @@ public class FavoriteDto {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getDongCode() {
-		return dongCode;
+	public String getGugunCode() {
+		return gugunCode;
 	}
-	public void setDongCode(String dongCode) {
-		this.dongCode = dongCode;
+	public void setGugunCode(String gugunCode) {
+		this.gugunCode = gugunCode;
 	}
 	public String getAddtime() {
 		return addtime;
