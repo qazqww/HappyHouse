@@ -12,26 +12,25 @@
         </p> -->
       <!-- </v-col> -->
       <v-col cols="12" md="5">
-        <v-card elevation="0" class="px-5 py-3">
+        <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
             <v-data-table
               :headers="headers"
               :items="notices"
               :items-per-page="5"
-              class="elevation-1"
               @click:row="moveView"
             />
           </v-card-text>
         </v-card>
       </v-col>
-      <v-col cols="12" md="5">
-        <v-card elevation="0" class="px-5 py-3">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <v-col cols="12" md="4">
+        <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
             <v-data-table
               :headers="headers"
               :items="articles"
               :items-per-page="5"
-              class="elevation-1"
               @click:row="moveView"
             />
           </v-card-text>

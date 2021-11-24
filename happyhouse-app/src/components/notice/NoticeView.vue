@@ -1,17 +1,27 @@
 <template>
-  <v-card class="mx-auto" max-width="800" outlined>
+  <v-card elevation="10" shaped class="mx-auto" max-width="800" outlined>
     <v-list-item three-line>
       <v-list-item-content>
-        <div class="text-overline mb-4">{{ article.regtime }}</div>
-        <v-list-item-title class="text-h5 mb-4">
+        <v-col></v-col>
+        <v-list-item-title class="text-h3 mb-4">
           {{ article.subject }}
         </v-list-item-title>
-        <v-list-item-subtitle class="mb-4"
-          >작성자: {{ article.userid }}</v-list-item-subtitle
-        >
-        <v-card-text>
-          {{ article.content }}
-        </v-card-text>
+        <v-col align="right">
+          <v-list-item-subtitle
+            >{{ article.regtime }} <br />작성자: {{ article.userid }}
+          </v-list-item-subtitle>
+        </v-col>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <v-card outlined class="mx-auto" min-height="100" max-width="700">
+          <v-col align="left">
+            {{ article.content }}
+          </v-col>
+        </v-card>
       </v-list-item-content>
 
       <!-- <v-list-item-avatar
@@ -20,11 +30,17 @@
         color="grey"
       ></v-list-item-avatar> -->
     </v-list-item>
-
-    <v-card-actions>
-      <v-btn large color="primary" rounded @click="moveUpdate"> 수정 </v-btn>
-      <v-btn large color="secondary" rounded @click="delNotice"> 삭제 </v-btn>
-    </v-card-actions>
+    <br />
+    <v-col align="right">
+      <v-btn large color="primary" style="font-size: 15px" @click="moveUpdate">
+        수정
+      </v-btn>
+      &nbsp;
+      <v-btn large color="secondary" style="font-size: 15px" @click="delNotice">
+        삭제
+      </v-btn>
+    </v-col>
+    <br />
   </v-card>
 </template>
 

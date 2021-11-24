@@ -1,7 +1,27 @@
 <template>
   <v-container class="text-center">
-    <h2 class="display-1 font-weight-bold mb-3">공지사항</h2>
+    <v-row>
+      <v-col justify="center" align="center">
+        <v-card elevation="0">
+          <br />
+          <router-link to="/">
+            <v-img
+              alt="Letter Logo"
+              contain
+              src="@/assets/notice.png"
+              transition="scale-transition"
+              width="200"
+            />
+            <br />
+            <br />
+          </router-link>
+        </v-card>
+      </v-col>
+    </v-row>
     <router-view></router-view>
+    <br />
+    <br />
+    <br />
   </v-container>
 </template>
 

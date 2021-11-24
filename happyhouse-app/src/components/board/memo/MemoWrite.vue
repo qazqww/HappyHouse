@@ -1,22 +1,32 @@
 <template>
-  <v-form @submit="onSubmit">
-    <v-text-field
-      id="userid"
-      ref="userid"
-      label="작성자"
-      v-model="memo.userid"
-      required
-    >
-    </v-text-field>
-    <v-textarea
-      id="comment"
-      ref="comment"
-      label="댓글 내용"
-      v-model="memo.comment"
-      required
-    ></v-textarea>
-    <v-btn type="submit" color="primary">작성</v-btn>
-  </v-form>
+  <v-container>
+    <v-row>
+      <v-col>
+        <v-form @submit="onSubmit">
+          <v-text-field
+            id="userid"
+            ref="userid"
+            label="작성자"
+            v-model="memo.userid"
+            required
+            prepend-icon="mdi-account"
+          >
+          </v-text-field>
+          <v-textarea
+            id="comment"
+            ref="comment"
+            label="댓글 내용"
+            v-model="memo.comment"
+            required
+            prepend-icon="mdi-pencil"
+          ></v-textarea>
+          <v-btn large type="submit" color="primary" style="font-size: 20px"
+            >작성</v-btn
+          >
+        </v-form>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -77,4 +87,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="css" scoped>
+.v-text-field >>> input {
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 15em;
+}
+.v-text-field >>> label {
+  font-size: 1em;
+}
+/* .v-text-field >>> button {
+  font-size: 0.8em;
+} */
+</style>

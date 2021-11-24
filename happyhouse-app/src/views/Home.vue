@@ -1,8 +1,14 @@
 <template>
   <article>
     <main-carousel />
+    <br />
     <main-house-wallpaper />
+    <br />
+    <br />
     <main-notice-board />
+    <br />
+    <br />
+    <br />
   </article>
 </template>
 

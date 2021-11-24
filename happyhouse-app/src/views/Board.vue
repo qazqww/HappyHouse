@@ -1,25 +1,27 @@
 <template>
   <v-container class="text-center">
-    <h2 class="display-1 font-weight-bold mb-3">질문 게시판</h2>
+    <v-row>
+      <v-col justify="center" align="center">
+        <v-card elevation="0">
+          <br />
+          <router-link to="/">
+            <v-img
+              alt="Letter Logo"
+              contain
+              src="@/assets/qna.png"
+              transition="scale-transition"
+              width="150"
+            />
+            <br />
+          </router-link>
+        </v-card>
+      </v-col>
+    </v-row>
     <router-view></router-view>
+    <br />
+    <br />
+    <br />
   </v-container>
-  <!-- <v-container>
-    <div justify="center" align="center">
-      <h3>게시판 페이지입니다.</h3>
-    </div>
-    <v-row>
-      <v-col justify="center" align="center"><h3>v-col1</h3></v-col>
-    </v-row>
-    <v-row>
-      <v-col justify="center" align="center"><h3>v-col2</h3></v-col>
-    </v-row>
-    <v-row>
-      <v-col justify="center" align="center"><h3>v-col3</h3></v-col>
-    </v-row>
-    <v-row>
-      <v-col justify="center" align="center"><router-view></router-view></v-col>
-    </v-row>
-  </v-container> -->
 </template>
 
 <script>

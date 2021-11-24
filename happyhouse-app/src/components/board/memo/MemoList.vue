@@ -1,6 +1,12 @@
 <template>
   <v-container>
-    <v-card class="mx-auto mb-1" max-width="800" v-for="memo in comments" :key="memo.memono">
+    <v-card
+      class="mx-auto mb-1"
+      max-width="800"
+      v-for="memo in comments"
+      :key="memo.memono"
+      elevation="10"
+    >
       <v-list-item three-line>
         <v-list-item-content>
           <v-row justify="space-between">

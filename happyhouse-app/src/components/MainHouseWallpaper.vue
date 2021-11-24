@@ -1,15 +1,12 @@
 <template>
   <v-row>
     <v-col justify="center">
-      <br />
-      <br />
-      <br />
       <v-card class="mx-auto" align="center" flat tile>
         <br />
         <v-img
           :src="require('@/assets/apartment_wallpaper.jpg')"
           class="grey lighten-2"
-          height="400"
+          height="350"
           width="77%"
         >
           <v-row class="fill-height pa-3" align="center">

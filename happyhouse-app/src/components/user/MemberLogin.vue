@@ -126,8 +126,9 @@ export default {
 
 <style lang="css" scoped>
 .v-text-field >>> input {
-  font-size: 1.7em;
-  font-weight: bold;
+  font-size: 1.2em;
+  font-weight: 150;
+  width: 20em;
 }
 .v-text-field >>> label {
   font-size: 1em;

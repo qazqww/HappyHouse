@@ -1,75 +1,72 @@
 <template>
   <v-container>
     <v-row>
-      <v-col></v-col>
-      <v-col cols="12">
-        <v-responsive color="primary" dark>
-          <template #header>My Page</template>
-
-          <template #lead> 내 정보 확인페이지입니다. </template>
-
-          <hr class="my-4" />
-
-          <v-container class="mt-4">
-            <v-row>
-              <v-col cols="2"></v-col>
-              <v-col cols="2" align-self="end">아이디</v-col>
-              <v-col cols="4">{{ userInfo.userid }}</v-col>
-              <v-col cols="2"></v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="2"></v-col>
-              <v-col cols="2">비밀번호</v-col>
-              <v-text-field
-                type="password"
-                class="pl-3 pr-3"
-                id="userpwd"
-                :disabled="viewMode"
-                v-model="user.userpwd"
-                required
-              >
-              </v-text-field>
-              <v-col cols="2"></v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="2"></v-col>
-              <v-col cols="2">이름</v-col>
-              <v-text-field
-                class="pl-3 pr-3"
-                id="username"
-                :disabled="viewMode"
-                v-model="user.username"
-                required
-              >
-              </v-text-field>
-              <v-col cols="2"></v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="2"></v-col>
-              <v-col cols="2">이메일</v-col>
-              <v-text-field
-                class="pl-3 pr-3"
-                id="email"
-                :disabled="viewMode"
-                v-model="user.email"
-                required
-              >
-              </v-text-field>
-              <v-col cols="2"></v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="2"></v-col>
-              <v-col cols="2">가입일</v-col>
-              <v-col cols="4">{{ userInfo.joindate }}</v-col>
-              <v-col cols="2"></v-col>
-            </v-row>
-          </v-container>
-          <hr class="my-4" />
-
+      <v-col>
+        <v-card class="mx-auto" max-width="800" elevation="2" outlined>
+          <v-responsive color="primary" dark>
+            <v-container class="mt-4">
+              <v-row>
+                <v-col cols="2"></v-col>
+                <v-col cols="2" align-self="end">아이디</v-col>
+                <v-col cols="4">{{ userInfo.userid }}</v-col>
+                <v-col cols="2"></v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="2"></v-col>
+                <v-col cols="2">비밀번호</v-col>
+                <v-text-field
+                  type="password"
+                  class="pl-3 pr-3"
+                  id="userpwd"
+                  :disabled="viewMode"
+                  v-model="user.userpwd"
+                  required
+                >
+                </v-text-field>
+                <v-col cols="2"></v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="2"></v-col>
+                <v-col cols="2">이름</v-col>
+                <v-text-field
+                  class="pl-3 pr-3"
+                  id="username"
+                  :disabled="viewMode"
+                  v-model="user.username"
+                  required
+                >
+                </v-text-field>
+                <v-col cols="2"></v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="2"></v-col>
+                <v-col cols="2">이메일</v-col>
+                <v-text-field
+                  class="pl-3 pr-3"
+                  id="email"
+                  :disabled="viewMode"
+                  v-model="user.email"
+                  required
+                >
+                </v-text-field>
+                <v-col cols="2"></v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="2"></v-col>
+                <v-col cols="2">가입일</v-col>
+                <v-col cols="4">{{ userInfo.joindate }}</v-col>
+                <v-col cols="2"></v-col>
+              </v-row>
+            </v-container>
+          </v-responsive>
+        </v-card>
+        <br />
+        <v-col offset-md="8">
           <div v-if="this.viewMode">
-            <v-btn color="primary" class="m-1" @click="changeMode"
+            <v-btn color="secondary" class="m-1" @click="changeMode"
               >수정하기
             </v-btn>
+            &nbsp;
             <v-btn color="error" class="m-1" @click="deleteMember"
               >탈퇴하기
             </v-btn>
@@ -78,9 +75,10 @@
             <v-btn color="primary" class="m-1" @click="modifyMember"
               >확인
             </v-btn>
+            &nbsp;
             <v-btn color="error" class="m-1" @click="changeMode">취소 </v-btn>
           </div>
-        </v-responsive>
+        </v-col>
       </v-col>
     </v-row>
   </v-container>
@@ -161,8 +159,23 @@ export default {
     moveHome() {
       this.$router.push({ name: "Home" });
     },
+    moveMyPage() {
+      this.$router.push({ name: "MyPage" });
+    },
   },
 };
 </script>
 
-<style></style>
+<style lang="css" scoped>
+.v-text-field >>> input {
+  font-size: 1.2em;
+  font-weight: 400;
+  width: 10em;
+}
+.v-text-field >>> label {
+  font-size: 1em;
+}
+/* .v-text-field >>> button {
+  font-size: 0.8em;
+} */
+</style>
