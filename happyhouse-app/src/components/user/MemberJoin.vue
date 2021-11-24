@@ -1,9 +1,30 @@
 <template>
   <v-container>
     <v-row>
+      <v-col justify="center" align="center">
+        <v-card elevation="0">
+          <router-link to="/">
+            <v-img
+              alt="Letter Logo"
+              contain
+              src="@/assets/letter_logo.png"
+              transition="scale-transition"
+              width="300"
+            />
+          </router-link>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row class="text-center">
       <v-col>
-        <v-card class="mx-auto" max-width="600">
+        <v-card
+          class="d-flex mx-auto justify-center"
+          max-width="700"
+          elevation="2"
+          outlined
+        >
           <v-form @submit="onSubmit" @reset="onReset">
+            <br />
             <v-text-field
               class="pl-3 pr-3"
               id="userid"
@@ -27,6 +48,7 @@
               prepend-icon="mdi-lock"
             >
             </v-text-field>
+
             <v-text-field
               class="pl-3 pr-3"
               id="username"
@@ -34,7 +56,7 @@
               label="이름"
               required
               placeholder="이름 입력.."
-              prepend-icon="mdi-lock"
+              prepend-icon="mdi-pen"
             >
             </v-text-field>
 
@@ -48,12 +70,27 @@
               prepend-icon="mdi-email"
             >
             </v-text-field>
-            <v-row><v-col></v-col></v-row>
-            <v-row><v-col></v-col></v-row>
-
-            <v-btn color="success" type="submit"> 회원가입 </v-btn>
-            <v-btn color="error" type="reset"> 취소 </v-btn>
-            <v-row><v-col></v-col></v-row>
+            <br />
+            <v-btn
+              block
+              x-large
+              style="font-size: 20px"
+              color="primary"
+              type="submit"
+            >
+              회원가입
+            </v-btn>
+            <v-btn
+              block
+              x-large
+              style="font-size: 20px"
+              color="secondary"
+              type="reset"
+            >
+              취소
+            </v-btn>
+            <br />
+            <br />
           </v-form>
         </v-card>
       </v-col>
@@ -127,4 +164,16 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="css" scoped>
+.v-text-field >>> input {
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 20em;
+}
+.v-text-field >>> label {
+  font-size: 1em;
+}
+/* .v-text-field >>> button {
+  font-size: 0.8em;
+} */
+</style>
