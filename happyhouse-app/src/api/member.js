@@ -31,12 +31,12 @@ async function deleteInfo(user, success, fail) {
   await api.delete(`/user/${user.userId}`).then(success).catch(fail);
 }
 
-async function joinMember(user, success, fail) {
-  await api.post(`/user/join`, JSON.stringify(user)).then(success).catch(fail);
+function joinMember(user, success, fail) {
+  api.post(`/user`, JSON.stringify(user)).then(success).catch(fail);
 }
 
-async function checkId(userid, success, fail) {
-  await api.get(`/user/idcheck/?ckid=${userid}`).then(success).catch(fail);
+function checkId(userid, success, fail) {
+  api.get(`/user/idcheck/?ckid=${userid}`).then(success).catch(fail);
 }
 // function logout(success, fail)
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +39,7 @@ public class FavoriteController {
 	
 	@ApiOperation(value = "관심지역 등록", notes = "새로운 관심지역을 등록한다. 그리고 DB입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PostMapping
-	public ResponseEntity<String> registerFavorite(@ApiParam(value = "등록할 관심지역 정보", required = true) FavoriteDto favDto) throws Exception {
+	public ResponseEntity<String> registerFavorite(@RequestBody @ApiParam(value = "등록할 관심지역 정보", required = true) FavoriteDto favDto) throws Exception {
 		if (favService.registerFavorite(favDto)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}

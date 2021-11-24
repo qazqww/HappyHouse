@@ -41,12 +41,9 @@ public class MemoController {
 	@ApiOperation(value = "댓글 등록", notes = "새로운 댓글 정보를 입력한다. 그리고 DB입력 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PostMapping
 	public ResponseEntity<String> registerMemo(@RequestBody @ApiParam(value = "수정할 댓글 정보", required = true) MemoDto memoDto) throws Exception {
-		System.out.println("1");
 		if (memoService.registerMemo(memoDto)) {
-			System.out.println("2");
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}
-		System.out.println("3");
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
 	

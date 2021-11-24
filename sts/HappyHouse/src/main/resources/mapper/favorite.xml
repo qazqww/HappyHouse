@@ -5,14 +5,14 @@
 <mapper namespace="com.ssafy.happyhouse.model.mapper.FavoriteMapper">
 
 	<insert id="registerFavorite" parameterType="FavoriteDto">
-		insert into favorite (userid, dongCode)
-		values (#{userid}, #{dongCode})
+		insert into favorite (userid, gugunCode)
+		values (#{userid}, #{gugunCode})
 	</insert>
 	
 	<select id="listFavorite" parameterType="string" resultType="map">
-		select d.sidoname, d.gugunname, d.dongname, f.addtime
-		from favorite f inner join dongcode d
-		on f.dongcode = d.dongcode
+		select g.dongname, f.addtime
+		from favorite f inner join guguncode g
+		on f.guguncode = d.guguncode
 		where userid = #{userid}
 	</select>
 	

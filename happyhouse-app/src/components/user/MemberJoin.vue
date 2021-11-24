@@ -108,6 +108,7 @@ export default {
       );
     },
     registerMember() {
+      console.log(this.user);
       joinMember(
         this.user,
         ({ data }) => {

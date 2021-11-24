@@ -108,7 +108,7 @@ public class MemberController{
 	
 	@ApiOperation(value = "회원 가입", notes = "회원 정보를 입력받아 가입한다. 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@PostMapping
-	public ResponseEntity<String> register(@ApiParam(value = "가입을 요청할 회원 정보", required = true) MemberDto memberDto) throws Exception {
+	public ResponseEntity<String> register(@RequestBody @ApiParam(value = "가입을 요청할 회원 정보", required = true) MemberDto memberDto) throws Exception {
 		if (memberService.registerMember(memberDto)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}

@@ -14,7 +14,7 @@
       ></v-img>
     </v-col> -->
     <v-col cols="10" class="align-self-center">
-      ○ {{ house.아파트 }}
+      <span class="mdi mdi-home-city mr-2"></span> {{ house.아파트 }}
     </v-col>
   </v-row>
 </template>
