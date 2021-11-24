@@ -14,7 +14,9 @@
       <v-pagination v-model="page" :length="pageCount"></v-pagination>
     </div>
     <v-col class="text-right">
-      <v-btn color="primary" @click="moveWrite()">글쓰기</v-btn>
+      <v-btn color="primary" style="font-size: 15px" @click="moveWrite()"
+        >글쓰기</v-btn
+      >
     </v-col>
   </div>
 </template>

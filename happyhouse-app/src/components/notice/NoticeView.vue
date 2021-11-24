@@ -22,8 +22,8 @@
     </v-list-item>
 
     <v-card-actions>
-      <v-btn @click="moveUpdate" outlined rounded text> 수정 </v-btn>
-      <v-btn @click="delNotice" outlined rounded text> 삭제 </v-btn>
+      <v-btn large color="primary" rounded @click="moveUpdate"> 수정 </v-btn>
+      <v-btn large color="secondary" rounded @click="delNotice"> 삭제 </v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -1,7 +1,5 @@
 <template>
   <v-app-bar app flat>
-    <v-app-bar-nav-icon class="hidden-md-and-up" @click="toggleDrawer" />
-
     <div class="d-flex align-center"></div>
 
     <v-container class="mx-auto py-0">
@@ -28,16 +26,6 @@
         </v-btn>
       </v-row>
     </v-container>
-    <!-- <div class="my-2">
-      <v-btn class="hidden-sm-and-down"> 게시판 </v-btn>
-    </div>
-
-    <div class="my-2">
-      <v-btn small color="secondary" dark> - </v-btn>
-    </div>
-    <div class="my-2">
-      <v-btn small color="secondary" dark> 아파트 정보 </v-btn>
-    </div> -->
 
     <div class="ml-auto" v-if="userInfo">
       <v-menu bottom min-width="200px" rounded offset-y>
@@ -74,9 +62,21 @@
       </v-menu>
     </div>
     <div v-else>
-      <v-btn color="primary" depressed :to="{ name: 'SignIn' }"> 로그인 </v-btn>
+      <v-btn
+        color="primary"
+        depressed
+        style="font-size: 15px"
+        :to="{ name: 'SignIn' }"
+      >
+        로그인
+      </v-btn>
       &nbsp;
-      <v-btn color="secondary" depressed :to="{ name: 'SignUp' }">
+      <v-btn
+        color="secondary"
+        depressed
+        style="font-size: 15px"
+        :to="{ name: 'SignUp' }"
+      >
         회원가입</v-btn
       >
     </div>
