@@ -10,10 +10,16 @@
 	</insert>
 	
 	<select id="listFavorite" parameterType="string" resultType="map">
-		select g.dongname, f.addtime
-		from favorite f inner join guguncode g
-		on f.guguncode = d.guguncode
-		where userid = #{userid}
+		select f.favno, s.sidoname, g.gugunname, f.addtime
+		from favorite f, guguncode g, sidocode s
+		where g.gugunCode in (
+			select gugunCode
+			from favorite
+			where userid = #{userid}
+		)
+		and left(s.sidocode, 2) = left(g.gugunCode, 2)
+		and f.guguncode = g.guguncode
+		order by f.addtime desc
 	</select>
 	
 	<delete id="deleteFavorite" parameterType="int">

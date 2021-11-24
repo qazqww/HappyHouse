@@ -59,7 +59,7 @@
                 {{ userInfo.email }}
               </p>
               <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text> 내 관심지역 </v-btn>
+              <v-btn depressed rounded text :to="{ name: 'MyFavorite' }"> 내 관심지역 </v-btn>
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text :to="{ name: 'MyPage' }">
                 내 정보보기
