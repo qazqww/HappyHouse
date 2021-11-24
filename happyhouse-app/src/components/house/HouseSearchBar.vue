@@ -34,7 +34,7 @@
 
 <script>
 import { mapState, mapActions, mapMutations, mapGetters } from "vuex";
-import { registerFavorite } from "@/api/favorite.js";
+import { checkFavorite, registerFavorite } from "@/api/favorite.js";
 
 const memberStore = "memberStore";
 const houseStore = "houseStore";
@@ -79,22 +79,42 @@ export default {
       if (this.gugunCode) this.getHouseList(this.gugunCode.value);
     },
     addFavorite() {
-      if (confirm(`${this.getSidoGugun} 을(를) 관심지역에 등록하시겠습니까?`)) {
-        registerFavorite({
-          userid: this.checkUserInfo.userid,
-          gugunCode: this.gugunCode.value + '00000',
-        },
+      const fav = {
+        userid: this.checkUserInfo.userid,
+        gugunCode: this.gugunCode.value + "00000",
+      };
+      checkFavorite(
+        fav,
         ({ data }) => {
-          let msg = "등록 처리시 문제가 발생했습니다.";
           if (data === "success") {
-            msg = "등록이 완료되었습니다.";
+            if (
+              confirm(
+                `${this.getSidoGugun} 을(를) 관심지역에 등록하시겠습니까?`
+              )
+            ) {
+              registerFavorite(
+                fav,
+                ({ data }) => {
+                  let msg = "등록 중 문제가 발생하였습니다.";
+                  if (data === "success") {
+                    msg = "등록이 완료되었습니다.";
+                  }
+                  alert(msg);
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            }
+          } else {
+            let msg = "이미 관심지역에 등록된 지역입니다.";
+            alert(msg);
           }
-          alert(msg);
         },
         (error) => {
           console.log(error);
-        });
-      }
+        }
+      );
     },
   },
 };

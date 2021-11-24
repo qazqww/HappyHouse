@@ -9,6 +9,12 @@
 		values (#{userid}, #{gugunCode})
 	</insert>
 	
+	<select id="checkFavorite" parameterType="FavoriteDto" resultType="int">
+		select count(favno)
+		from favorite
+		where userid = #{userid} and gugunCode = #{gugunCode};
+	</select>
+	
 	<select id="listFavorite" parameterType="string" resultType="map">
 		select f.favno, s.sidoname, g.gugunname, f.addtime
 		from favorite f, guguncode g, sidocode s
