@@ -4,7 +4,9 @@
       :headers="headers"
       :items="hospitals"
       hide-default-footer
-      class="elevation-1"
+      class="elevation-1 mb-5"
+      no-data-text="해당하는 데이터가 존재하지 않습니다."
+      v-if="executed"
     ></v-data-table>
   </div>
 </template>
@@ -12,6 +14,7 @@
 <script>
 import { mapActions, mapMutations, mapState } from "vuex";
 
+const houseStore = "houseStore";
 const hospitalStore = "hospitalStore";
 
 export default {
@@ -30,7 +33,8 @@ export default {
     };
   },
   computed: {
-    ...mapState(hospitalStore, ["hospitals"]),
+    ...mapState(hospitalStore, ["hospitals", "executed"]),
+    ...mapState(houseStore, ["gugun"]),
   },
   methods: {
     ...mapMutations(hospitalStore, [

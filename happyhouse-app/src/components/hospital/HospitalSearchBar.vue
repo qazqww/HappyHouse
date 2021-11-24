@@ -53,6 +53,7 @@ export default {
   },
   destroyed() {
     this.CLEAR_SIDO_LIST();
+    this.CLEAR_GUGUN_LIST();
     this.CLEAR_HOSPITAL_LIST();
   },
   methods: {

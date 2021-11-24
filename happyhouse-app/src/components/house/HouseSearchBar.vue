@@ -28,7 +28,7 @@
         ></v-select>
       </v-col>
     </v-row>
-    <v-btn @click="addFavorite">관심지역 등록</v-btn>
+    <v-btn @click="addFavorite" v-if="houses.length">관심지역 등록</v-btn>
   </v-container>
 </template>
 
@@ -48,7 +48,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(houseStore, ["sidos", "guguns"]),
+    ...mapState(houseStore, ["sidos", "guguns", "houses"]),
     ...mapGetters(houseStore, ["getSidoGugun"]),
     ...mapGetters(memberStore, ["checkUserInfo"]),
   },

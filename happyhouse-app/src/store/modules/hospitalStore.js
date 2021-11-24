@@ -4,14 +4,17 @@ const hospitalStore = {
   namespaced: true,
   state: {
     hospitals: [],
+    executed: false,
   },
   getters: {},
   mutations: {
     SET_HOSPITAL_LIST: (state, hospitals) => {
       state.hospitals = hospitals;
+      state.executed = true;
     },
     CLEAR_HOSPITAL_LIST: (state) => {
       state.hospitals = [];
+      state.executed = false;
     },
   },
   actions: {

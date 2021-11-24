@@ -7,6 +7,7 @@
       :items-per-page="itemsPerPage"
       hide-default-footer
       class="elevation-1"
+      no-data-text="게시글이 없습니다."
       @page-count="pageCount = $event"
       @click:row="moveView"
     ></v-data-table>
