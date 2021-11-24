@@ -24,6 +24,9 @@
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'House' }">
           아파트 매매 정보
         </v-btn>
+        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Hospital' }">
+          코로나 선별 진료소
+        </v-btn>
       </v-row>
     </v-container>
 

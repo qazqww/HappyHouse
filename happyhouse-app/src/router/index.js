@@ -4,9 +4,9 @@ import Home from "../views/Home.vue";
 
 import Notice from "../views/Notice.vue";
 import NoticeList from "../components/notice/NoticeList.vue";
-import NoticeWrite from "../components/notice/NoticeWrite.vue"
-import NoticeView from "../components/notice/NoticeView.vue"
-import NoticeUpdate from "../components/notice/NoticeUpdate.vue"
+import NoticeWrite from "../components/notice/NoticeWrite.vue";
+import NoticeView from "../components/notice/NoticeView.vue";
+import NoticeUpdate from "../components/notice/NoticeUpdate.vue";
 
 import Member from "@/views/Member.vue";
 import MemberLogin from "@/components/user/MemberLogin.vue";
@@ -21,6 +21,7 @@ import BoardView from "@/components/board/BoardView.vue";
 import BoardUpdate from "@/components/board/BoardUpdate.vue";
 
 import House from "@/views/House.vue";
+import Hospital from "@/views/Hospital.vue";
 
 import store from "@/store/index.js";
 
@@ -143,6 +144,11 @@ const routes = [
     path: "/house",
     name: "House",
     component: House,
+  },
+  {
+    path: "/hospital",
+    name: "Hospital",
+    component: Hospital,
   },
 ];
 

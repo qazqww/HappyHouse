@@ -23,24 +23,22 @@
         <v-select
           :items="guguns"
           v-model="gugunCode"
-          @change="searchApt"
+          @change="searchHosp"
           return-object
         ></v-select>
       </v-col>
     </v-row>
-    <v-btn @click="addFavorite">관심지역 등록</v-btn>
   </v-container>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations, mapGetters } from "vuex";
-import { registerFavorite } from "@/api/favorite.js";
+import { mapState, mapActions, mapMutations } from "vuex";
 
-const memberStore = "memberStore";
 const houseStore = "houseStore";
+const hospitalStore = "hospitalStore";
 
 export default {
-  name: "HouseSearchBar",
+  name: "HospitalSearchBar",
   data() {
     return {
       sidoCode: null,
@@ -49,52 +47,37 @@ export default {
   },
   computed: {
     ...mapState(houseStore, ["sidos", "guguns"]),
-    ...mapGetters(houseStore, ["getSidoGugun"]),
-    ...mapGetters(memberStore, ["checkUserInfo"]),
   },
   created() {
     this.getSido();
   },
   destroyed() {
     this.CLEAR_SIDO_LIST();
-    this.CLEAR_DETAIL_HOUSE();
+    this.CLEAR_HOSPITAL_LIST();
   },
   methods: {
-    ...mapActions(houseStore, ["getSido", "getGugun", "getHouseList"]),
+    ...mapActions(houseStore, ["getSido", "getGugun"]),
     ...mapMutations(houseStore, [
       "CLEAR_SIDO_LIST",
       "CLEAR_GUGUN_LIST",
       "SET_SIDO",
       "SET_GUGUN",
-      "CLEAR_DETAIL_HOUSE",
     ]),
+    ...mapActions(hospitalStore, ["getHospitalList"]),
+    ...mapMutations(hospitalStore, ["CLEAR_HOSPITAL_LIST"]),
     gugunList() {
       this.CLEAR_GUGUN_LIST();
       this.SET_SIDO(this.sidoCode.text);
       this.gugunCode = null;
       if (this.sidoCode) this.getGugun(this.sidoCode.value);
     },
-    searchApt() {
+    searchHosp() {
       this.SET_GUGUN(this.gugunCode.text);
-      if (this.gugunCode) this.getHouseList(this.gugunCode.value);
-    },
-    addFavorite() {
-      if (confirm(`${this.getSidoGugun} 을(를) 관심지역에 등록하시겠습니까?`)) {
-        registerFavorite({
-          userid: this.checkUserInfo.userid,
-          gugunCode: this.gugunCode.value + '00000',
-        },
-        ({ data }) => {
-          let msg = "등록 처리시 문제가 발생했습니다.";
-          if (data === "success") {
-            msg = "등록이 완료되었습니다.";
-          }
-          alert(msg);
-        },
-        (error) => {
-          console.log(error);
+      if (this.gugunCode)
+        this.getHospitalList({
+          sidoName: this.sidoCode.text,
+          gugunName: this.gugunCode.text,
         });
-      }
     },
   },
 };
