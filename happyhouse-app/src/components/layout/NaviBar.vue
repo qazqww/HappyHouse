@@ -28,13 +28,14 @@
     </v-container>
 
     <div class="ml-auto" v-if="userInfo">
-      <v-menu bottom min-width="200px" rounded offset-y>
+      <v-menu bottom min-width="250px" rounded offset-y>
         <template v-slot:activator="{ on }">
-          <v-btn icon x-large v-on="on">
+          <v-btn color="white" icon v-on="on">
             <v-avatar color="indigo">
               <v-icon dark> mdi-account-circle </v-icon>
             </v-avatar>
           </v-btn>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </template>
         <v-card>
           <v-list-item-content class="justify-center">
@@ -47,7 +48,9 @@
                 {{ userInfo.email }}
               </p>
               <v-divider class="my-3"></v-divider>
-              <v-btn depressed rounded text :to="{ name: 'MyFavorite' }"> 내 관심지역 </v-btn>
+              <v-btn depressed rounded text :to="{ name: 'MyFavorite' }">
+                내 관심지역
+              </v-btn>
               <v-divider class="my-3"></v-divider>
               <v-btn depressed rounded text :to="{ name: 'MyPage' }">
                 내 정보보기
