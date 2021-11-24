@@ -21,14 +21,14 @@ async function findById(userid, success, fail) {
 
 function modifyInfo(user, success, fail) {
   api
-    .put(`/user/${user.userId}`, JSON.stringify(user))
+    .put(`/user`, JSON.stringify(user))
     .then(success)
     .catch(fail);
 }
 
-async function deleteInfo(user, success, fail) {
-  api.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
-  await api.delete(`/user/${user.userId}`).then(success).catch(fail);
+function deleteInfo(user, success, fail) {
+  // api.defaults.headers["access-token"] = sessionStorage.getItem("access-token");
+  api.delete(`/user/${user.userid}`).then(success).catch(fail);
 }
 
 function joinMember(user, success, fail) {

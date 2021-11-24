@@ -13,8 +13,22 @@
           <v-container class="mt-4">
             <v-row>
               <v-col cols="2"></v-col>
-              <v-col cols="2" align-self="end">아이디 : </v-col>
+              <v-col cols="2" align-self="end">아이디</v-col>
               <v-col cols="4">{{ userInfo.userid }}</v-col>
+              <v-col cols="2"></v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="2"></v-col>
+              <v-col cols="2">비밀번호</v-col>
+              <v-text-field
+                type="password"
+                class="pl-3 pr-3"
+                id="userpwd"
+                :disabled="viewMode"
+                v-model="user.userpwd"
+                required
+              >
+              </v-text-field>
               <v-col cols="2"></v-col>
             </v-row>
             <v-row>

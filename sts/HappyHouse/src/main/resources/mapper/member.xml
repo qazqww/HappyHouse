@@ -37,7 +37,7 @@
 	</delete>
 	
 	<select id="info" parameterType="String" resultType="MemberDto">
-		select userid, username, email, joindate
+		select userid, userpwd, username, email, joindate
 		from member
 		where userid = #{userid}
 	</select>

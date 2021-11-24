@@ -133,6 +133,7 @@ public class MemberController{
 	@ApiOperation(value = "회원 탈퇴", notes = "아이디에 해당하는 회원 정보를 삭제한다. 그리고 DB삭제 성공여부에 따라 'success' 또는 'fail' 문자열을 반환한다.", response = String.class)
 	@DeleteMapping("/{userid}")
 	public ResponseEntity<String> delete(@PathVariable("userid") @ApiParam(value = "삭제할 회원의 아이디", required = true) String userid) throws Exception {
+		System.out.println(">>>" + userid);
 		if (memberService.deleteMember(userid)) {
 			return new ResponseEntity<String>(SUCCESS, HttpStatus.OK);
 		}

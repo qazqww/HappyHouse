@@ -95,8 +95,7 @@ export default {
       checkId(
         this.user.userid,
         ({ data }) => {
-          let cnt = data.idcount;
-          if (cnt == 0) {
+          if (data === "success") {
             this.idresult = this.user.userid + "는 사용 가능합니다.";
           } else {
             this.idresult = this.user.userid + "는 사용할 수 없습니다.";
