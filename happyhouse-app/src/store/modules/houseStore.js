@@ -20,15 +20,6 @@ const houseStore = {
   },
 
   getters: {
-    getHouse(state) {
-      return state.house;
-    },
-    getKeywords(state) {
-      return state.keywords;
-    },
-    getOption(state) {
-      return state.mapOption;
-    },
     getSidoGugun(state) {
       return state.sido + " " + state.gugun;
     }

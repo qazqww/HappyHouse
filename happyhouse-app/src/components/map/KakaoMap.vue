@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <div id="map" ref="kmap" style="width: 500px; height: 400px"></div>
-  </div>
+  <v-card>
+    <div id="map" ref="kmap" class="mx-auto"></div>
+  </v-card>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 let kakao = window.kakao;
 const houseStore = "houseStore";
 
@@ -20,15 +20,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(houseStore, [
-      "getHouse",
-      "getKeywords",
-      "getOption",
-      "getSidoGugun",
-    ]),
+    ...mapState(houseStore, ["house, keywords, mapOption"]),
+    ...mapGetters(houseStore, ["getSidoGugun"]),
   },
   created() {
-    this.options = this.getOption;
+    this.options = this.mapOption;
   },
   mounted() {
     var container = this.$refs.kmap;
@@ -53,7 +49,7 @@ export default {
     },
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     onePlaceSearchCB(data, status) {
-        var map = this.mapInstance;
+      var map = this.mapInstance;
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -149,11 +145,11 @@ export default {
     },
   },
   watch: {
-    getHouse({ 법정동, 아파트 }) {
+    house({ 법정동, 아파트 }) {
       this.getLocation(법정동 + " " + 아파트);
       console.log("getHouse", 법정동, 아파트);
     },
-    getKeywords() {
+    keywords() {
       this.getLocationsWithKeyword();
       this.getGugunCenter();
     },

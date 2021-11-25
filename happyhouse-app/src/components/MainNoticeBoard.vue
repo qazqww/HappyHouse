@@ -11,13 +11,16 @@
           >
         </p> -->
       <!-- </v-col> -->
-      <v-col cols="12" md="5">
+      <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
+            <div class="text-h6 text--primary">공지사항</div>
             <v-data-table
               :headers="headers"
               :items="notices"
               :items-per-page="5"
+              hide-default-footer
+              no-data-text="게시글이 없습니다."
               @click:row="moveView"
             />
           </v-card-text>
@@ -27,10 +30,13 @@
       <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
+            <div class="text-h6 text--primary">QnA</div>
             <v-data-table
               :headers="headers"
               :items="articles"
               :items-per-page="5"
+              hide-default-footer
+              no-data-text="게시글이 없습니다."
               @click:row="moveView"
             />
           </v-card-text>
@@ -46,13 +52,12 @@ const noticeStore = "noticeStore";
 const boardStore = "boardStore";
 
 export default {
-  name: " MainNoticeBoard",
+  name: "MainNoticeBoard",
 
   data: () => ({
     headers: [
-      { text: "조회수", sortable: false, value: "hit" },
       { text: "제목", sortable: false, value: "subject" },
-      { text: "글쓴이", sortable: false, value: "userid" },
+      { text: "조회수", sortable: false, value: "hit" },
     ],
   }),
   computed: {

@@ -3,15 +3,13 @@
     <v-row>
       <v-col justify="center" align="center">
         <v-card elevation="0">
-          <router-link to="/">
-            <v-img
-              alt="Letter Logo"
-              contain
-              src="@/assets/letter_logo.png"
-              transition="scale-transition"
-              width="300"
-            />
-          </router-link>
+          <v-img
+            alt="Letter Logo"
+            contain
+            src="@/assets/letter_logo.png"
+            transition="scale-transition"
+            width="300"
+          />
         </v-card>
       </v-col>
     </v-row>
