@@ -4,7 +4,6 @@
       <v-col justify="center" align="center">
         <v-card elevation="0">
           <br />
-          <router-link to="/">
             <v-img
               alt="Letter Logo"
               contain
@@ -13,7 +12,7 @@
               width="150"
             />
             <br />
-          </router-link>
+            <br />
         </v-card>
       </v-col>
     </v-row>

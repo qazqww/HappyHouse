@@ -31,7 +31,7 @@
       ></v-list-item-avatar> -->
     </v-list-item>
     <br />
-    <v-col align="right">
+    <v-col align="right" v-if="userInfo.userid == article.userid">
       <v-btn large color="primary" style="font-size: 15px" @click="moveUpdate">
         수정
       </v-btn>
@@ -45,13 +45,19 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { getNotice, deleteNotice } from "@/api/notice.js";
+
+const memberStore = "memberStore";
 
 export default {
   data() {
     return {
       article: {},
     };
+  },
+  computed: {
+    ...mapState(memberStore, ["userInfo"]),
   },
   created() {
     getNotice(

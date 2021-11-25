@@ -14,7 +14,7 @@
       <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
-            <div class="text-h6 text--primary mb-3">공지사항</div>
+            <div class="text-h5 text--primary mb-3">공지사항</div>
             <v-data-table
               :headers="headers"
               :items="notices"
@@ -31,7 +31,7 @@
       <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
-            <div class="text-h6 text--primary mb-3">QnA</div>
+            <div class="text-h5 text--primary mb-3">QnA</div>
             <v-data-table
               :headers="headers"
               :items="articles"

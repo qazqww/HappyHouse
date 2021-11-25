@@ -37,7 +37,7 @@
         color="primary"
         style="font-size: 15px"
         @click="addFavorite"
-        v-if="houses.length"
+        v-if="houses.length && userInfo"
         >관심지역 등록</v-btn
       >
     </v-row>
@@ -62,6 +62,7 @@ export default {
   },
   computed: {
     ...mapState(houseStore, ["sidos", "guguns", "houses"]),
+    ...mapState(memberStore, ["userInfo"]),
     ...mapGetters(houseStore, ["getSidoGugun"]),
     ...mapGetters(memberStore, ["checkUserInfo"]),
   },

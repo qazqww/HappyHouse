@@ -49,6 +49,7 @@
             <v-col
               ><v-text-field
                 id="userpwd"
+                type="password"
                 v-model="user.userpwd"
                 label="비밀번호"
                 required

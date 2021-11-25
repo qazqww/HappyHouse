@@ -30,7 +30,7 @@
       ></v-list-item-avatar> -->
       </v-list-item>
       <br />
-      <v-col align="right">
+      <v-col align="right" v-if="userInfo.userid == article.userid">
         <v-btn
           large
           color="primary"
@@ -72,6 +72,7 @@ import MemoWrite from "./memo/MemoWrite.vue";
 import { deleteArticle } from "@/api/board.js";
 
 const boardStore = "boardStore";
+const memberStore = "memberStore";
 
 export default {
   name: "BoardView",
@@ -80,6 +81,7 @@ export default {
   },
   computed: {
     ...mapState(boardStore, ["article"]),
+    ...mapState(memberStore, ["userInfo"]),
   },
   components: {
     MemoList,

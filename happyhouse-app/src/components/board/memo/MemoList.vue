@@ -26,11 +26,26 @@
               <v-list-item-subtitle>{{ memo.comment }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
+          <v-card-actions v-if="memo.userid == userInfo.userid">
+            <v-btn
+              class="ml-3"
+              outlined
+              rounded
+              text
+              @click="delMemo(memo.memono)"
+            >
+              삭제
+            </v-btn>
+          </v-card-actions>
         </v-card>
       </v-container>
     </v-card>
     <v-container v-else
-      ><v-card class="mx-auto mb-1" max-width="800" max-height="500" elevation="0"
+      ><v-card
+        class="mx-auto mb-1"
+        max-width="800"
+        max-height="500"
+        elevation="0"
         >답변을 기다리는 중입니다...</v-card
       >
     </v-container>
@@ -38,8 +53,12 @@
 </template>
 
 <script>
-import { listMemo } from "@/api/memo.js";
+import { mapState } from "vuex";
+import { listMemo, deleteMemo } from "@/api/memo.js";
 // import MemoListRow from "./MemoListRow.vue";
+
+const memberStore = "memberStore";
+
 export default {
   name: "MemoList",
   data() {
@@ -50,11 +69,11 @@ export default {
   props: {
     no: Number,
   },
-  components: {
-    // MemoListRow,
+  computed: {
+    ...mapState(memberStore, ["userInfo"]),
   },
   mounted() {
-    console.log(this.no);
+    // console.log(this.no);
     listMemo(
       this.no,
       ({ data }) => {
@@ -65,6 +84,21 @@ export default {
         console.log(error);
       }
     );
+  },
+  methods: {
+    delMemo(no) {
+      if (confirm("정말로 삭제하시겠습니까?")) {
+        deleteMemo(
+          no,
+          () => {
+            this.$router.go();
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
+      }
+    },
   },
 };
 </script>
