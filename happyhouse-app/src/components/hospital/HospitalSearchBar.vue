@@ -17,6 +17,8 @@
           v-model="sidoCode"
           @change="gugunList"
           return-object
+          label="시·도"
+          outlined
         ></v-select>
       </v-col>
       <v-col class="sm-3">
@@ -25,6 +27,8 @@
           v-model="gugunCode"
           @change="searchHosp"
           return-object
+          label="구·군"
+          outlined
         ></v-select>
       </v-col>
     </v-row>

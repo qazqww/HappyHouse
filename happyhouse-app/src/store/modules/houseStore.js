@@ -22,7 +22,7 @@ const houseStore = {
   getters: {
     getSidoGugun(state) {
       return state.sido + " " + state.gugun;
-    }
+    },
   },
 
   mutations: {
@@ -112,7 +112,7 @@ const houseStore = {
         params,
         (response) => {
           // console.log("key", params.serviceKey);
-          // console.log(response.data.response.body.items.item);
+          // console.log(response.data);
           commit("SET_HOUSE_LIST", response.data.response.body.items.item);
         },
         (error) => {

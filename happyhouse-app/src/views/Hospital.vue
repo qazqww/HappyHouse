@@ -5,14 +5,13 @@
     </h3>
     <v-row>
       <v-col>
-        <hospital-search-bar/>
+        <hospital-search-bar />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col cols="12">
-        <hospital-list />
-      </v-col>
-    </v-row>
+
+    <hospital-list />
+    <br />
+    <br />
   </v-container>
 </template>
 
@@ -26,9 +25,7 @@ export default {
     HospitalSearchBar,
     HospitalList,
   },
-}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

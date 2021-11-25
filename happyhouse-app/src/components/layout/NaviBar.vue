@@ -17,14 +17,19 @@
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'Board' }">
           게시판
         </v-btn>
-        <v-btn large depressed style="font-size: 15px"> ???</v-btn>
+
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'Notice' }"
           >공지사항
         </v-btn>
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'House' }">
           아파트 매매 정보
         </v-btn>
-        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Hospital' }">
+        <v-btn
+          large
+          depressed
+          style="font-size: 15px"
+          :to="{ name: 'Hospital' }"
+        >
           코로나 선별 진료소
         </v-btn>
       </v-row>
