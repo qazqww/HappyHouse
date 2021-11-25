@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="text-center">답변</h2>
+    <h2 class="text-center mb-5">답변</h2>
     <v-card
       class="mx-auto"
       color="primary"
@@ -42,11 +42,11 @@
     </v-card>
     <v-container v-else
       ><v-card
-        class="mx-auto mb-1"
+        class="mx-auto mb-1 text-center"
         max-width="800"
         max-height="500"
         elevation="0"
-        >답변을 기다리는 중입니다...</v-card
+        >답변이 존재하지 않습니다.</v-card
       >
     </v-container>
   </div>
