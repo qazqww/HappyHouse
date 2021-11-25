@@ -95,19 +95,19 @@ const routes = [
       {
         path: "write",
         name: "BoardWrite",
-        // beforeEnter: onlyAuthUser,
+        beforeEnter: onlyAuthUser,
         component: BoardWrite,
       },
       {
         path: "view/:articleno",
         name: "BoardView",
-        // beforeEnter: onlyAuthUser,
+        beforeEnter: onlyAuthUser,
         component: BoardView,
       },
       {
         path: "update/:articleno",
         name: "BoardUpdate",
-        // beforeEnter: onlyAuthUser,
+        beforeEnter: onlyAuthUser,
         component: BoardUpdate,
       },
     ],
@@ -126,6 +126,7 @@ const routes = [
       {
         path: "write",
         name: "NoticeWrite",
+        beforeEnter: onlyAuthUser,
         component: NoticeWrite,
       },
       {
@@ -136,6 +137,7 @@ const routes = [
       {
         path: "update/:articleno",
         name: "NoticeUpdate",
+        beforeEnter: onlyAuthUser,
         component: NoticeUpdate,
       },
     ],

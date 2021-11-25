@@ -1,5 +1,10 @@
 <template>
-  <v-container>
+  <v-card
+      class="mx-auto"
+      elevation="0"
+      max-width="800"
+      min-height="300"
+    >
     <v-row>
       <v-col>
         <v-form @submit="onSubmit">
@@ -10,6 +15,7 @@
             v-model="memo.userid"
             required
             prepend-icon="mdi-account"
+            readonly
           >
           </v-text-field>
           <v-textarea
@@ -26,13 +32,14 @@
         </v-form>
       </v-col>
     </v-row>
-  </v-container>
+  </v-card>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import { writeMemo } from "@/api/memo.js";
 
+const memberStore = "memberStore";
 const boardStore = "boardStore";
 
 export default {
@@ -40,14 +47,18 @@ export default {
   data() {
     return {
       memo: {
-        userid: "admin",
+        userid: "",
         comment: "",
         articleno: 0,
       },
     };
   },
   computed: {
+    ...mapState(memberStore, ["userInfo"]),
     ...mapGetters(boardStore, ["getArticleNo"]),
+  },
+  created() {
+    this.memo.userid = this.userInfo.userid;
   },
   methods: {
     onSubmit(event) {

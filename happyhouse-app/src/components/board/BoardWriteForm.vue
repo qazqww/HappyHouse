@@ -6,6 +6,7 @@
       label="작성자"
       v-model="article.userid"
       required
+      readonly
     >
     </v-text-field>
     <v-text-field
@@ -32,7 +33,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import { writeArticle, getArticle, modifyArticle } from "@/api/board.js";
+
+const memberStore = "memberStore";
+
 export default {
   name: "BoardWriteForm",
   data() {
@@ -48,7 +53,11 @@ export default {
   props: {
     type: { type: String },
   },
+  computed: {
+    ...mapState(memberStore, ["userInfo"]),
+  },
   created() {
+    this.article.userid = this.userInfo.userid;
     if (this.type === "modify") {
       getArticle(
         this.$route.params.articleno,

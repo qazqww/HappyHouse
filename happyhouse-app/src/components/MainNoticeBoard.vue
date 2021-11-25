@@ -14,14 +14,15 @@
       <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
-            <div class="text-h6 text--primary">공지사항</div>
+            <div class="text-h6 text--primary mb-3">공지사항</div>
             <v-data-table
               :headers="headers"
               :items="notices"
               :items-per-page="5"
+              hide-default-header
               hide-default-footer
               no-data-text="게시글이 없습니다."
-              @click:row="moveView"
+              @click:row="moveNotice"
             />
           </v-card-text>
         </v-card>
@@ -30,14 +31,15 @@
       <v-col cols="12" md="4">
         <v-card elevation="2" outlined class="px-5 py-3">
           <v-card-text>
-            <div class="text-h6 text--primary">QnA</div>
+            <div class="text-h6 text--primary mb-3">QnA</div>
             <v-data-table
               :headers="headers"
               :items="articles"
               :items-per-page="5"
+              hide-default-header
               hide-default-footer
               no-data-text="게시글이 없습니다."
-              @click:row="moveView"
+              @click:row="moveQna"
             />
           </v-card-text>
         </v-card>
@@ -47,7 +49,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 const noticeStore = "noticeStore";
 const boardStore = "boardStore";
 
@@ -57,7 +59,6 @@ export default {
   data: () => ({
     headers: [
       { text: "제목", sortable: false, value: "subject" },
-      { text: "조회수", sortable: false, value: "hit" },
     ],
   }),
   computed: {
@@ -67,16 +68,12 @@ export default {
   methods: {
     ...mapActions(noticeStore, ["loadNotices"]),
     ...mapActions(boardStore, ["loadArticles"]),
-    ...mapMutations(noticeStore, ["LOAD_NOTICES"]),
-    ...mapMutations(boardStore, ["LOAD_ARTICLES"]),
-    moveWrite() {
-      this.$router.push({ name: "NoticeWrite" }),
-        this.$router.push({ name: "BoardWrite" });
+    moveNotice(value) {
+      this.$router.push({ name: "NoticeView", params: value });
     },
-    moveView(value) {
-      this.$router.push({ name: "NoticeView", params: value }),
-        this.$router.push({ name: "BoardView", params: value });
-    },
+    moveQna(value) {
+      this.$router.push({ name: "BoardView", params: value });
+    }
   },
   created() {
     this.loadNotices();

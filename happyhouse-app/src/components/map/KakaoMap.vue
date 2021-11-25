@@ -1,11 +1,11 @@
 <template>
-  <v-card>
+  <v-card elevation="0">
     <div id="map" ref="kmap" class="mx-auto"></div>
   </v-card>
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapGetters } from "vuex";
 let kakao = window.kakao;
 const houseStore = "houseStore";
 
@@ -20,15 +20,19 @@ export default {
     };
   },
   computed: {
-    ...mapState(houseStore, ["house, keywords, mapOption"]),
-    ...mapGetters(houseStore, ["getSidoGugun"]),
+    ...mapGetters(houseStore, [
+      "getHouse",
+      "getKeywords",
+      "getOption",
+      "getSidoGugun",
+    ]),
   },
   created() {
     this.options = this.mapOption;
   },
   mounted() {
     var container = this.$refs.kmap;
-    const { center, level } = this.options;
+    const { center, level } = this.mapOption;
     this.mapInstance = new kakao.maps.Map(container, {
       center: new kakao.maps.LatLng(center.lat, center.lng),
       level,
@@ -145,11 +149,11 @@ export default {
     },
   },
   watch: {
-    house({ 법정동, 아파트 }) {
+    getHouse({ 법정동, 아파트 }) {
       this.getLocation(법정동 + " " + 아파트);
       console.log("getHouse", 법정동, 아파트);
     },
-    keywords() {
+    getKeywords() {
       this.getLocationsWithKeyword();
       this.getGugunCenter();
     },

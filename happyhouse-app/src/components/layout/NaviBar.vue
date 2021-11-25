@@ -1,9 +1,11 @@
 <template>
   <v-app-bar app flat>
+    <div class="d-flex align-center"></div>
+
+    <v-container class="mx-auto py-0">
       <v-row align="center">
         <router-link to="/">
           <v-img
-          class="mx-5"
             alt="HappyHouse Logo"
             contain
             src="@/assets/H_logo.png"
@@ -11,11 +13,13 @@
             width="35"
           />
         </router-link>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Board' }">
+          게시판
+        </v-btn>
+
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'Notice' }"
           >공지사항
-        </v-btn>
-        <v-btn large depressed style="font-size: 15px" :to="{ name: 'Board' }">
-          QnA 게시판
         </v-btn>
         <v-btn large depressed style="font-size: 15px" :to="{ name: 'House' }">
           아파트 매매 정보
@@ -29,6 +33,7 @@
           코로나 선별 진료소
         </v-btn>
       </v-row>
+    </v-container>
 
     <div class="ml-auto" v-if="userInfo">
       <v-menu bottom min-width="250px" rounded offset-y>

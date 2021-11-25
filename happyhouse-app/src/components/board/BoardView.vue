@@ -55,12 +55,8 @@
     <br />
     <br />
     <br />
-
-    <h2 class="text-left ml-7">답변</h2>
     <v-col align="left">
-      <v-card color="secondary" elevation="1" max-width="800" min-height="300">
-        <memo-list :no="article.articleno" />
-      </v-card>
+      <memo-list :no="this.$route.params.articleno" />
     </v-col>
     <br />
     <br />
@@ -98,7 +94,7 @@ export default {
         params: { articleno: this.article.articleno },
       });
     },
-    delArticle() {
+    delNotice() {
       if (confirm("정말로 삭제하시겠습니까?")) {
         deleteArticle(
           this.article.articleno,

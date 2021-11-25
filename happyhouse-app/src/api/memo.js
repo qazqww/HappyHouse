@@ -2,8 +2,8 @@ import { apiInstance } from './index.js';
 
 const api = apiInstance();
 
-function listMemo(articleno, success, fail) {
-    api.get(`/memo/${articleno}`).then(success).catch(fail);
+async function listMemo(articleno, success, fail) {
+    await api.get(`/memo/${articleno}`).then(success).catch(fail);
 }
 
 function writeMemo(memo, success, fail) {
