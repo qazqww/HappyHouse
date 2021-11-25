@@ -26,8 +26,8 @@ export default {
       //   ],
       chartOptions: {
         chart: {
-          title: "Company Performance",
-          subtitle: "Sales, Expenses, and Profit: 2014-2017",
+          title: "지역별 아파트 평균 매매가",
+          subtitle: "단위(만 원)",
         },
       },
     };

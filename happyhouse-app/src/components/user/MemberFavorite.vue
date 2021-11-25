@@ -8,7 +8,8 @@
       <!-- {{ loc.addtime }} -->
       <v-btn @click="deleteFav(loc.favno)">X</v-btn>
     </div>
-    <my-chart :chartData="chartData" />
+    <my-chart :chartData="chartData" v-if="list.length"/>
+    <div v-else>등록된 관심지역이 없습니다.</div>
   </div>
 </template>
 
@@ -28,14 +29,14 @@ export default {
   data() {
     return {
       list: [],
-      chartData: [["동 이름", "평균 매매가"]],
+      chartData: [["동 이름", "평균 매매가(만 원)"]],
     };
   },
   computed: {
     ...mapGetters(memberStore, ["checkUserInfo"]),
   },
   created() {
-    this.chartData = [["동 이름", "평균 매매가"]];
+    this.chartData = [["동 이름", "평균 매매가(만 원)"]];
     listFavorite(
       this.checkUserInfo.userid,
       ({ data }) => {
@@ -50,8 +51,8 @@ export default {
               console.log(error);
             }
           );
-          console.log(this.chartData);
         });
+        console.log(this.chartData);
       },
       (error) => {
         console.log(error);

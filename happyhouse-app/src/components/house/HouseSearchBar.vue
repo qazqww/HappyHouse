@@ -121,7 +121,7 @@ export default {
     getAverage() {
       let total = 0;
       this.houses.forEach((house) => {
-        total += Number(house.거래금액.replace(",", "") + "0000");
+        total += Number(house.거래금액.replace(",", ""));
       });
       total /= 10;
       const param = {
