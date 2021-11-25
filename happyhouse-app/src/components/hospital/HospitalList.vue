@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <v-data-table
-      :headers="headers"
-      :items="hospitals"
-      hide-default-footer
-      class="elevation-1 mb-5"
-      no-data-text="해당하는 데이터가 존재하지 않습니다."
-      v-if="executed"
-    ></v-data-table>
-  </div>
+  <v-row>
+    <v-col>
+      <v-card elevation="10" shaped class="mx-auto" max-width="1000" outlined>
+        <v-data-table
+          :headers="headers"
+          :items="hospitals"
+          hide-default-footer
+          class="elevation-1"
+          no-data-text="해당하는 데이터가 존재하지 않습니다."
+          v-if="executed"
+        ></v-data-table>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

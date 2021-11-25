@@ -17,6 +17,8 @@
           v-model="sidoCode"
           @change="gugunList"
           return-object
+          label="시·도"
+          outlined
         ></v-select>
       </v-col>
       <v-col class="sm-3">
@@ -25,10 +27,20 @@
           v-model="gugunCode"
           @change="searchApt"
           return-object
+          label="구·군"
+          outlined
         ></v-select>
       </v-col>
+      <v-btn
+        block
+        x-large
+        color="primary"
+        style="font-size: 15px"
+        @click="addFavorite"
+        v-if="houses.length"
+        >관심지역 등록</v-btn
+      >
     </v-row>
-    <v-btn @click="addFavorite" v-if="houses.length">관심지역 등록</v-btn>
   </v-container>
 </template>
 
@@ -126,7 +138,7 @@ export default {
       total /= 10;
       const param = {
         average: total,
-        gugunCode: this.gugunCode.value + '00000',
+        gugunCode: this.gugunCode.value + "00000",
       };
       registerValue(
         param,

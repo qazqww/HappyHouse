@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div id="map" ref="kmap" style="width: 500px; height: 400px"></div>
-  </div>
+  <v-card>
+    <div id="map" ref="kmap" class="mx-auto"></div>
+  </v-card>
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
     },
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
     onePlaceSearchCB(data, status) {
-        var map = this.mapInstance;
+      var map = this.mapInstance;
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
