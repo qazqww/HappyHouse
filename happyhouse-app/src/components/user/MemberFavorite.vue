@@ -1,14 +1,28 @@
 <template>
   <div>
-    <h2>관심지역</h2>
-    <div v-for="loc in list" :key="loc.favno">
-      <!-- {{ loc.favno }} -->
-      {{ loc.sidoname }}
-      {{ loc.gugunname }}
-      <!-- {{ loc.addtime }} -->
-      <v-btn @click="deleteFav(loc.favno)">X</v-btn>
-    </div>
-    <my-chart :chartData="chartData" v-if="list.length"/>
+    <h2 class="mb-5">관심지역</h2>
+    <v-row class="mb-5">
+      <v-col cols="12" md="2" v-for="loc in list" :key="loc.favno">
+        <v-card class="mr-auto" elevation="2" min-width="150" max-width="150" outlined>
+          <v-list-item three-line>
+            <v-list-item-content>
+              <div class="text-overline mb-4">{{ loc.sidoname }}</div>
+              <v-list-item-title class="text-h5 mb-1">
+                {{ loc.gugunname }}
+              </v-list-item-title>
+            </v-list-item-content>
+            <!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
+          </v-list-item>
+
+          <v-card-actions>
+            <v-btn outlined rounded text @click="deleteFav(loc.favno)">
+              삭제
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+    <my-chart :chartData="chartData" v-if="list.length" />
     <div v-else>등록된 관심지역이 없습니다.</div>
   </div>
 </template>
