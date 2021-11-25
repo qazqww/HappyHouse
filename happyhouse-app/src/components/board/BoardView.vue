@@ -4,8 +4,8 @@
       <v-list-item three-line>
         <v-list-item-content>
           <v-col></v-col>
-          <v-list-item-title class="text-h4 mb-4">
-            {{ article.subject }}
+          <v-list-item-title class="text-h7 mb-4">
+            Q. {{ article.subject }}
           </v-list-item-title>
           <v-col align="right">
             <v-list-item-subtitle
